@@ -5,7 +5,7 @@ import theme from '@/styles/theme'
 import { Box, Heading, Text } from '@chakra-ui/layout'
 import { TwitchPlayer, TwitchChat, TwitchWindow } from 'react-twitch-embed'
 import { Button } from '@chakra-ui/react'
-import { FaDiscord, FaInstagram, FaTiktok, FaTwitch, FaTwitter } from 'react-icons/fa'
+import { FaDiscord, FaInstagram, FaTiktok, FaTwitch, FaTwitter, FaYoutube } from 'react-icons/fa'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -118,6 +118,16 @@ export default function Home() {
 						colorScheme="twitter"
 					>
 						Twitter
+					</Button>
+
+					<Button 
+						onClick={() => window.open('https://www.youtube.com/@hansumfella', '_blank')} 
+						mr={'5'} 
+						leftIcon={<FaYoutube />}
+						size="lg"
+						colorScheme="red"
+					>
+						YouTube
 					</Button>
 
 				</Box>
