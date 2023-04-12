@@ -73,7 +73,7 @@ export default function Home() {
 					justifyContent={'center'}
 					w={'100vw'}
 					pt={'5rem'}
-					backgroundColor={'brand.purple.900'}
+					backgroundColor={'brand.purple.500'}
 				>
 
 					<Box
@@ -84,14 +84,14 @@ export default function Home() {
 						flexDirection="column"
 						p={'0.5rem'}
 					>
-						 <Heading
+						 {/* <Heading
 							fontSize="3xl"
 							fontWeight="bold"
 							color="brand.gray.100"
 							mb={8}
 						>
 							Merch Coming Soon...
-						</Heading>
+						</Heading> */}
 
 
 						{/* <VStack spacing={8}>
