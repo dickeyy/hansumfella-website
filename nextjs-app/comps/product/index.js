@@ -1,0 +1,116 @@
+import Head from 'next/head'
+import { Box, Button, ChakraProvider, HStack, Heading, Image, Text, useColorMode, useColorModeValue } from '@chakra-ui/react'
+import { FaEye, FaShieldAlt, FaShoppingCart, FaStar } from 'react-icons/fa'
+import { RiRadioButtonLine } from 'react-icons/ri'
+
+import theme from '../../styles/theme.js'
+import React from 'react'
+
+export default function Product(props) {
+
+    const [ inStock, setInstock ] = React.useState(true)
+    const [ stockColor, setStockColor ] = React.useState('green.500')
+
+    React.useEffect(() => {
+
+        console.log(props.stock)
+        if (props.stock <= 0) {
+            setInstock(false)
+            setStockColor('red.500')
+        } else if (props.stock <= 5) {
+            setStockColor('orange.500')
+        }
+    }, [])
+
+  return (
+    <Box
+        display={'flex'}
+        flexDir={'row'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        textAlign={'center'}
+        transition={'all 0.2s ease-in-out'}
+        backgroundColor={'rgba(180, 180, 180, 0.2)'}
+        backdropFilter={'blur(10px)'}
+        boxShadow={'rgba(28, 28, 28, 0.2) 0px 0px 10px'}
+        borderRadius={'10px'}
+        p={'0.8rem'}
+    >
+        
+        <Image src={props.image} 
+            borderRadius={'8px'}
+            objectFit={'cover'}
+            w={['5rem', '8rem', '10rem']}
+            h={['5rem', '8rem', '10rem']}
+            mr={'1rem'}
+        />
+        <Box 
+            display={'flex'}
+            flexDirection={'column'}
+            justifyContent={'left'}
+            alignItems={'left'}
+            textAlign={'left'}
+            w={['15rem', '20rem', '25rem']}
+        >
+            <Heading
+                fontSize={['2xl', '3xl', '4xl']}
+                maxW={'30rem'}
+                maxH={'5rem'}
+                textOverflow={'ellipsis'}
+                overflow={'hidden'}
+                whiteSpace={'nowrap'}
+                color={'brand.purple.100'}
+            >
+                {props.title}
+            </Heading>
+
+            <Text
+                color={'brand.gray.50'}
+                fontSize={'2xl'}
+                fontWeight={'medium'}
+            >
+                ${props.price} + tax
+            </Text>
+
+            <Text
+                color={stockColor}
+                fontSize={'md'}
+                fontWeight={'medium'}
+            >
+                {props.stock} in stock
+            </Text>
+
+            <HStack
+                mt={'0.5rem'}
+            >
+
+                <Button
+                    leftIcon={<FaShoppingCart />}
+                    colorScheme={'brand.purple'}
+                    variant={'solid'}
+                    w={['6.5rem','10rem']}
+                    size={['sm', 'md', 'lg']}
+                    isDisabled={!inStock}
+                    onClick={
+                        () => {
+                            console.log('Add to cart')
+                        }
+                    }
+                >Add to Cart</Button>
+
+                <a
+                    href={`/product/${props.id}`}
+                >
+                    <Button
+                        leftIcon={<FaEye />}
+                        colorScheme={'brand.purple'}
+                        variant={'outline'}
+                        w={['6.5rem', '10rem']}
+                        size={['sm', 'md', 'lg']}
+                    >More Info</Button>
+                </a>
+            </HStack>
+        </Box>
+    </Box>
+  )
+}
