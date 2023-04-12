@@ -5,7 +5,7 @@ import theme from '../../styles/theme.js'
 
 import React from 'react'
 import { FaDiscord, FaInstagram, FaTiktok, FaTwitch, FaTwitter, FaYoutube } from 'react-icons/fa';
-import { TwitchChat, TwitchPlayer } from 'react-twitch-embed';
+import { TwitchChat, TwitchPlayerNonInteractive } from 'react-twitch-embed';
 
 export default function Hero(props) {
 
@@ -169,10 +169,9 @@ export default function Hero(props) {
                         flexDirection={'row'}
                         borderRadius={'8px'}
                     >
-                        <TwitchPlayer channel={'hansumfella'} />
+                        <TwitchPlayerNonInteractive channel={'hansumfella'} />
                         <TwitchChat channel={'hansumfella'} height={'100%'}/>
                     </Box>
-                    
 
                 </Box>
 
