@@ -160,7 +160,7 @@ export default function Hero(props) {
 
             </Box>
             
-            <Image src={'images/wave-light.png'} w={'100vw'} h={['25%', '25%', '25%', '10%']} />
+            <Image src={'images/wave-light.png'} w={'100vw'} h={['25%', '25%', '10%', '10%']} />
 
         </Box>       
 

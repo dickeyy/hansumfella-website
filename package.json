@@ -2,6 +2,7 @@
   "dependencies": {
     "@shopify/shopify-api": "^7.0.0",
     "axios": "^1.3.5",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "nextjs-google-analytics": "^2.3.3"
   }
 }
