@@ -72,7 +72,7 @@ export default function Hero(props) {
                         The <Heading as={'span'} fontSize={['5xl','7xl','7xl','7xl']} color={'brand.purple.500'}>most</Heading> handsome fella on Twitch
                     </Heading>
 
-                    <Text fontSize={'xl'} pr={['10','10','10','0']} pl={['10','10','10','0']} w={['100vw', '100vw', '100vw', '40vw']}  mt={'8'} fontWeight={'medium'} color={'brand.gray.300'}>
+                    <Text fontSize={'xl'} pr={['10','10','10','0']} pl={['10','10','10','0']} w={['100vw', '100vw', '100vw', '40vw']} fontWeight={'medium'} color={'brand.gray.300'}>
                         Gaming, humor, looks, and smarts. <Text as={'span'} color={'brand.brown.700'} fontWeight={'bold'}>Fella</Text> has it all!
                     </Text>
 
@@ -123,25 +123,7 @@ export default function Hero(props) {
                         </Grid>
                     </Box>
 
-                    <Box zIndex={'5'} display={'flex'} flexDir={['column', 'column', 'column', 'column']} w={['100vw', '100vw', '40vw', '40vw']} justifyContent={['center','center','left','left']} mt={3} >
-                        
-                        {botStats == {} ? <Spinner /> : 
-
-                            <Box>
-                                <Text>
-                                    <Text as={'span'} fontSize={'2xl'} fontWeight={'medium'} color={'brand.gray.300'}>Over </Text>
-                                    <Text as={'span'} fontSize={'2xl'} fontWeight={'bold'} color={'brand.gray.100'}>10,000</Text>
-                                    <Text as={'span'} fontSize={'2xl'} fontWeight={'medium'} color={'brand.gray.300'}> followers,</Text>
-                                </Text>
-                                <Text>
-                                    <Text as={'span'} fontSize={'2xl'} fontWeight={'medium'} color={'brand.gray.300'}>and </Text>
-                                    <Text as={'span'} fontSize={'2xl'} fontWeight={'bold'} color={'brand.gray.100'}>millions</Text>
-                                    <Text as={'span'} fontSize={'2xl'} fontWeight={'medium'} color={'brand.gray.300'}> of views</Text>
-                                </Text>
-                            </Box>
-                        }
-
-                    </Box>
+                    
 
                 </Box>      
 
@@ -178,7 +160,7 @@ export default function Hero(props) {
 
             </Box>
             
-            <Image src={'images/wave.png'} w={'100vw'} h={['25%', '25%', '25%', '10%']} />
+            <Image src={'images/Wave.png'} w={'100vw'} h={['25%', '25%', '25%', '10%']} />
 
         </Box>       
 

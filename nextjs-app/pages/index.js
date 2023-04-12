@@ -10,6 +10,7 @@ import React from 'react'
 import NavBar from '@/comps/navbar'
 import Product from '@/comps/product'
 import Hero from '@/comps/homeHero'
+import Footer from '@/comps/footer'
 
 export default function Home() {
 
@@ -66,13 +67,13 @@ export default function Home() {
 
 				<Hero />
 
-				{/* <Box
+				<Box
 					display={'flex'}
 					flexDirection={'column'}
 					justifyContent={'center'}
 					w={'100vw'}
-					p={['1rem', '2rem', '3rem', '5rem']}
-					pt={'10rem'}
+					pt={'5rem'}
+					backgroundColor={'brand.purple.900'}
 				>
 
 					<Box
@@ -81,19 +82,19 @@ export default function Home() {
 						justifyContent="center"
 						alignItems="center"
 						flexDirection="column"
-						mt="5vh"
 						p={'0.5rem'}
 					>
-						<Heading
-							fontSize="7xl"
+						 <Heading
+							fontSize="3xl"
 							fontWeight="bold"
+							color="brand.gray.100"
 							mb={8}
 						>
-							Shop
+							Merch Coming Soon...
 						</Heading>
 
 
-						<VStack spacing={8}>
+						{/* <VStack spacing={8}>
 							{products.map((product) => {
 								return (
 									<Product 
@@ -106,11 +107,15 @@ export default function Home() {
 									/>
 								)
 							})}
-						</VStack>
+						</VStack> */}
+
+
 					</Box>
-				</Box> */}
+					<Footer />
+				</Box>
 
 			</Box>
+
 		</Box>
 		
 
