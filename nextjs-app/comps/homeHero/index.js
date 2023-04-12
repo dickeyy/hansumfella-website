@@ -43,7 +43,7 @@ export default function Hero(props) {
             bgImage={'url(images/Sprinkle.png)'}
             bgPos={'static'}
             bgBlendMode={'overlay'}
-            bgColor={'rgba(0,0,0,0.4)'}
+            bgColor={'rgba(0,0,0,0.3)'}
             // make the background parralax
             bgAttachment={'fixed'}
             flexDirection={'column'}
@@ -169,8 +169,9 @@ export default function Hero(props) {
                         flexDirection={'row'}
                         borderRadius={'8px'}
                     >
-                        <TwitchPlayerNonInteractive channel={'hansumfella'} />
-                        <TwitchChat channel={'hansumfella'} height={'100%'}/>
+                        <TwitchPlayerNonInteractive style={{
+                            borderRadius: '8px',
+                        }} channel={'hansumfella'} />
                     </Box>
 
                 </Box>
