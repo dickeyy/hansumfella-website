@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { ChakraProvider } from '@chakra-ui/provider'
 import theme from '@/styles/theme'
 import { Box, Heading, Text, VStack } from '@chakra-ui/layout'
+import { useColorMode, useColorModeValue } from '@chakra-ui/react'
 import axios from 'axios'
 import React from 'react'
 
@@ -12,15 +13,25 @@ import Hero from '@/comps/homeHero'
 
 export default function Home() {
 
+	const { toggleColorMode } = useColorMode();
+  	const text = useColorModeValue('dark', 'light');
+
 	// const [products, setProducts] = React.useState([])
 
-	// React.useEffect(() => {
-	// 	axios.get('/api/fetch-products')
-	// 		.then((res) => {
-	// 			console.log(res.data.products)
-	// 			setProducts(res.data.products.data)
-	// 		})
-	// }, [])
+	React.useEffect(() => {
+		// axios.get('/api/fetch-products')
+		// 	.then((res) => {
+		// 		console.log(res.data.products)
+		// 		setProducts(res.data.products.data)
+		// 	})
+
+		setTimeout(() => {
+			if (text === 'dark') {
+				toggleColorMode
+			}
+		}, 2000)
+	}, [])
+	
 
   return (
     <ChakraProvider theme={theme}>

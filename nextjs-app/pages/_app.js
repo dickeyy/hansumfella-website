@@ -13,7 +13,15 @@ export default function App({ Component, pageProps }) {
   React.useEffect(() => {
 
     if (text === 'dark') {
-        toggleColorMode
+      toggleColorMode
+    }
+
+    if (text === 'dark') {
+      toggleColorMode
+    }
+
+    if (text === 'dark') {
+      toggleColorMode
     }
   }, [])
 

@@ -69,7 +69,7 @@ export default function Hero(props) {
                 >
 
                     <Heading as={'h1'} fontSize={['5xl','7xl','7xl','7xl']} pr={['5','5','5','0']} pl={['5','5','5','0']} >
-                        The <Heading as={'span'} fontSize={['5xl','7xl','7xl','7xl']} color={'brand.purple.500'}>most</Heading> handsome fella on twitch
+                        The <Heading as={'span'} fontSize={['5xl','7xl','7xl','7xl']} color={'brand.purple.500'}>most</Heading> handsome fella on Twitch
                     </Heading>
 
                     <Text fontSize={'xl'} pr={['10','10','10','0']} pl={['10','10','10','0']} w={['100vw', '100vw', '100vw', '40vw']}  mt={'8'} fontWeight={'medium'} color={'brand.gray.300'}>
