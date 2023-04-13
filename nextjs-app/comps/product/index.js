@@ -38,7 +38,7 @@ export default function Product(props) {
         p={'0.8rem'}
     >
         
-        <Image src={props.image} 
+        <Image src={'https://yt3.googleusercontent.com/LxcHrV0t8Rg-eNIyIPjjo14bwNkqg6jtp-HfzX31gSzbOVhH6DoNyg3b0dJIHy2VXRSrB8z75mc=s900-c-k-c0x00ffffff-no-rj'} 
             borderRadius={'8px'}
             // blur the image
             filter={'blur(12px)'}
