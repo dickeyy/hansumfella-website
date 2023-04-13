@@ -18,7 +18,7 @@ export default function NavBar(props) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState([1,1,1])
 
     const handleClick = () => {
         onOpen()
@@ -127,13 +127,13 @@ export default function NavBar(props) {
             </Hide>
 
                 
-            {/* <IconButton
+            <IconButton
                 aria-label='Dashboard'
                 as={FaShoppingCart }
                 p={'0.6rem'}
                 cursor={'pointer'}
                 variant={'solid'}
-                color={'brand.purple.50'}
+                color={'brand.alt.pink.50'}
                 borderRadius={'8px'}
                 // put this on the right side
                 position={'absolute'}
@@ -158,15 +158,15 @@ export default function NavBar(props) {
                     mt={'0.2rem'}
                     mr={'0.2rem'}
                     borderRadius={'50%'}
-                    backgroundColor={'brand.purple.600'}
-                    color={'brand.purple.50'}
+                    backgroundColor={'brand.alt.pink.600'}
+                    color={'brand.alt.brown.50'}
                     fontSize={'1rem'}
                     fontWeight={'bold'}
                     p={'0.1rem 0.5rem'}
                 >
                     {cart.length}
                 </Box>
-            } */}
+            }
             
 
             {/* <Show breakpoint='(max-width: 530px)'>

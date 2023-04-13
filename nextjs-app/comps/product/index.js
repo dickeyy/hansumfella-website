@@ -9,16 +9,16 @@ import React from 'react'
 export default function Product(props) {
 
     const [ inStock, setInstock ] = React.useState(true)
-    const [ stockColor, setStockColor ] = React.useState('green.500')
+    const [ stockColor, setStockColor ] = React.useState('green.200')
 
     React.useEffect(() => {
 
         console.log(props.stock)
         if (props.stock <= 0) {
             setInstock(false)
-            setStockColor('red.500')
+            setStockColor('red.200')
         } else if (props.stock <= 5) {
-            setStockColor('orange.500')
+            setStockColor('orange.200')
         }
     }, [])
 
@@ -59,13 +59,12 @@ export default function Product(props) {
                 textOverflow={'ellipsis'}
                 overflow={'hidden'}
                 whiteSpace={'nowrap'}
-                color={'brand.purple.100'}
             >
                 {props.title}
             </Heading>
 
             <Text
-                color={'brand.gray.50'}
+                color={'brand.gray.500'}
                 fontSize={'2xl'}
                 fontWeight={'medium'}
             >
@@ -86,7 +85,7 @@ export default function Product(props) {
 
                 <Button
                     leftIcon={<FaShoppingCart />}
-                    colorScheme={'brand.purple'}
+                    colorScheme={'brand.alt.pink'}
                     variant={'solid'}
                     w={['6.5rem','10rem']}
                     size={['sm', 'md', 'lg']}
@@ -103,7 +102,7 @@ export default function Product(props) {
                 >
                     <Button
                         leftIcon={<FaEye />}
-                        colorScheme={'brand.purple'}
+                        colorScheme={'brand.alt.pink'}
                         variant={'outline'}
                         w={['6.5rem', '10rem']}
                         size={['sm', 'md', 'lg']}

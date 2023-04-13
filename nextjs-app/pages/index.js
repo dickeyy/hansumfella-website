@@ -17,18 +17,29 @@ export default function Home() {
 	const { toggleColorMode } = useColorMode();
   	const text = useColorModeValue('dark', 'light');
 
-	// const [products, setProducts] = React.useState([])
+	const [products, setProducts] = React.useState([])
 
 	React.useEffect(() => {
-		// axios.get('/api/fetch-products')
-		// 	.then((res) => {
-		// 		console.log(res.data.products)
-		// 		setProducts(res.data.products.data)
-		// 	})
+		axios.get('/api/fetch-products')
+			.then((res) => {
+				console.log(res.data.products)
+
+				let tempArray = []
+
+				res.data.products.data.forEach(item => {
+					if (item.status == 'active') {
+						tempArray.push(item)
+					}
+				});
+
+				setProducts(tempArray)
+			})
 
 		setTimeout(() => {
 			if (text === 'dark') {
-				toggleColorMode
+				console.log('dark')
+				// set the color mode to dark
+				toggleColorMode()
 			}
 		}, 2000)
 	}, [])
@@ -73,7 +84,7 @@ export default function Home() {
 					justifyContent={'center'}
 					w={'100vw'}
 					pt={'5rem'}
-					backgroundColor={'brand.purple.500'}
+					backgroundColor={'brand.alt.pink.700'}
 				>
 
 					<Box
@@ -108,6 +119,8 @@ export default function Home() {
 								)
 							})}
 						</VStack> */}
+
+						<Box h={'2rem'} />
 
 
 					</Box>

@@ -40,10 +40,10 @@ export default function Hero(props) {
             display={'flex'}
             w={'100vw'}
             h={'100vh'}
-            bgImage={'url(images/Sprinkle.png)'}
+            bgImage={'url(images/sprinkle-pink.png)'}
             bgPos={'static'}
-            bgBlendMode={'overlay'}
             bgColor={'rgba(0,0,0,0.3)'}
+            bgBlendMode={'overlay'}
             // make the background parralax
             bgAttachment={'fixed'}
             flexDirection={'column'}
@@ -69,11 +69,11 @@ export default function Hero(props) {
                 >
 
                     <Heading as={'h1'} fontSize={['5xl','7xl','7xl','7xl']} pr={['5','5','5','0']} pl={['5','5','5','0']} >
-                        The <Heading as={'span'} fontSize={['5xl','7xl','7xl','7xl']} color={'brand.purple.500'}>most</Heading> handsome fella on Twitch
+                        The <Heading as={'span'} fontSize={['5xl','7xl','7xl','7xl']} color={'brand.alt.pink.500'}>most</Heading> handsome fella on Twitch
                     </Heading>
 
-                    <Text fontSize={'xl'} pr={['10','10','10','0']} pl={['10','10','10','0']} w={['100vw', '100vw', '100vw', '40vw']} fontWeight={'medium'} color={'brand.gray.300'}>
-                        Gaming, humor, looks, and smarts. <Text as={'span'} color={'brand.brown.700'} fontWeight={'bold'}>Fella</Text> has it all!
+                    <Text fontSize={'xl'} pr={['10','10','10','0']} pl={['10','10','10','0']} w={['100vw', '100vw', '100vw', '40vw']} fontWeight={'medium'} color={'brand.gray.100'}>
+                        Gaming, humor, looks, and smarts. <Text as={'span'} color={'brand.alt.pink.300'} fontWeight={'bold'}>Fella</Text> has it all!
                     </Text>
 
                     <Box
@@ -87,37 +87,37 @@ export default function Hero(props) {
                         <Grid templateColumns={'repeat(3,2fr)'} gap={3}>
                             <GridItem>
                                 <a href='https://twitch.tv/hansumfella' target={'_blank'}>
-                                    <IconButton icon={<FaTwitch />} colorScheme={'brand.purple'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'solid'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaTwitch />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
 
                             <GridItem>
                                 <a href='https://discord.com/invite/dQRZeCJv' target={'_blank'}>
-                                    <IconButton icon={<FaDiscord />} colorScheme={'brand.blurple'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'solid'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaDiscord />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
 
                             <GridItem>
                                 <a href='https://www.tiktok.com/@hansumfellaclips' target={'_blank'}>
-                                    <IconButton icon={<FaTiktok />} colorScheme={'blue'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'solid'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaTiktok />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
 
                             <GridItem>
                                 <a href='https://www.youtube.com/@hansumfella' target={'_blank'}>
-                                    <IconButton icon={<FaYoutube />} colorScheme={'red'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'solid'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaYoutube />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
 
                             <GridItem>
                                 <a href='https://www.instagram.com/hansumfellaaa/' target={'_blank'}>
-                                    <IconButton icon={<FaInstagram />} colorScheme={'pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'solid'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaInstagram />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
 
                             <GridItem>
                                 <a href='https://twitter.com/HansumFellaLIVE' target={'_blank'}>
-                                    <IconButton icon={<FaTwitter />} colorScheme={'twitter'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'solid'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaTwitter />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
                         </Grid>
@@ -160,7 +160,7 @@ export default function Hero(props) {
 
             </Box>
             
-            <Image src={'images/wave.png'} w={'100vw'} h={['25%', '25%', '10%', '10%']} />
+            <Image src={'images/wave-pink.png'} w={'100vw'} h={['25%', '15%', '15%', '10%']} />
 
         </Box>       
 

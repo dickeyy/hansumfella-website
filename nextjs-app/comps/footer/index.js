@@ -34,7 +34,7 @@ export default function Footer(props) {
 
                     <Text
                         fontSize={'md'}
-                        color={'brand.gray.100'}
+                        color={'brand.gray.50'}
                         ml={'0.5rem'}
                     >
                         © 2023 Hansumfella LLC.
