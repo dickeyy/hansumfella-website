@@ -13,7 +13,6 @@ export default function Product(props) {
 
     React.useEffect(() => {
 
-        console.log(props.stock)
         if (props.stock <= 0) {
             setInstock(false)
             setStockColor('red.200')

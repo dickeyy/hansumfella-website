@@ -140,12 +140,13 @@ export default function NavBar(props) {
 
                 
             <IconButton
-                aria-label='Dashboard'
+                aria-label='Shopping Cart'
                 as={FaShoppingCart }
                 p={'0.6rem'}
                 cursor={'pointer'}
                 variant={'solid'}
                 color={'brand.alt.pink.50'}
+                bgColor={'transparent'}
                 borderRadius={'8px'}
                 // put this on the right side
                 position={'absolute'}

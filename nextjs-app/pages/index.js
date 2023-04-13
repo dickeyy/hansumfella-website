@@ -12,9 +12,7 @@ import Product from '@/comps/product'
 import Hero from '@/comps/homeHero'
 import Footer from '@/comps/footer'
 
-export default function Home(session) {
-
-	console.log(session)
+export default function Home() {
 
 	const { toggleColorMode } = useColorMode();
   	const text = useColorModeValue('dark', 'light');
@@ -25,7 +23,6 @@ export default function Home(session) {
 	React.useEffect(() => {
 		axios.get('/api/fetch-products')
 			.then((res) => {
-				console.log(res.data.products)
 
 				let tempArray = []
 
@@ -49,11 +46,17 @@ export default function Home(session) {
 
 		setTimeout(() => {
 			if (text === 'dark') {
-				console.log('dark')
 				// set the color mode to dark
 				toggleColorMode()
 			}
 		}, 2000)
+
+		setTimeout(() => {
+			if (text === 'dark') {
+				// set the color mode to dark
+				toggleColorMode()
+			}
+		}, 10000)
 	}, [])
 	
 

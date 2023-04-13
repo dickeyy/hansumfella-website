@@ -76,7 +76,6 @@ export default function Home() {
 			if (!id) return
 			axios.get(`/api/fetch-product-by-id?id=${id}`)
 			.then((res) => {
-				console.log(res.data.product)
 				setProduct(res.data.product)
 			})
 			.catch((err) => {

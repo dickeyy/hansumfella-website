@@ -155,7 +155,10 @@ export default function Hero(props) {
                     >
                         <TwitchPlayerNonInteractive style={{
                             borderRadius: '8px',
-                        }} channel={'hansumfella'} />
+                            zIndex: '0',
+                        }} channel={'hansumfella'}
+                        noCookie={true}
+                        />
                     </Box>
 
                 </Box>
