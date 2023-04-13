@@ -42,6 +42,8 @@ export default function Hero(props) {
             h={'100vh'}
             bgImage={'url(images/sprinkle-pink.png)'}
             bgPos={'static'}
+            // zoom in on the background
+            bgSize={'120%'}
             bgColor={'rgba(0,0,0,0.3)'}
             bgBlendMode={'overlay'}
             // make the background parralax
@@ -73,7 +75,7 @@ export default function Hero(props) {
                     </Heading>
 
                     <Text fontSize={'xl'} pr={['10','10','10','0']} pl={['10','10','10','0']} w={['100vw', '100vw', '100vw', '40vw']} fontWeight={'medium'} color={'brand.gray.100'}>
-                        Gaming, humor, looks, and smarts. <Text as={'span'} color={'brand.alt.pink.300'} fontWeight={'bold'}>Fella</Text> has it all!
+                        He’s got his own website that’s pretty<Text as={'span'} color={'brand.alt.pink.300'} fontWeight={'bold'}> cool</Text>
                     </Text>
 
                     <Box
@@ -160,7 +162,7 @@ export default function Hero(props) {
 
             </Box>
             
-            <Image src={'images/wave-pink.png'} w={'100vw'} h={['25%', '15%', '15%', '10%']} />
+            <Image src={'images/wave-pink.png'} w={'100vw'} h={['25%', '18%', '15%', '10%']} />
 
         </Box>       
 

@@ -1,6 +1,7 @@
 import '@shopify/shopify-api/adapters/node';
 import {shopifyApi, LATEST_API_VERSION} from '@shopify/shopify-api';
 import { restResources } from "@shopify/shopify-api/rest/admin/2023-01";
+
 import dotenv from 'dotenv';
 
 // load environment variables
@@ -17,7 +18,5 @@ const shopify = shopifyApi({
     // Mount REST resources
     restResources
 });
-
-
 
 export default shopify;

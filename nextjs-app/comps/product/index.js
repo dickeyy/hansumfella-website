@@ -20,6 +20,7 @@ export default function Product(props) {
         } else if (props.stock <= 5) {
             setStockColor('orange.200')
         }
+
     }, [])
 
   return (
@@ -30,7 +31,7 @@ export default function Product(props) {
         alignItems={'center'}
         textAlign={'center'}
         transition={'all 0.2s ease-in-out'}
-        backgroundColor={'rgba(180, 180, 180, 0.2)'}
+        backgroundColor={'rgba(15,16,32,0.7)'}
         backdropFilter={'blur(10px)'}
         boxShadow={'rgba(28, 28, 28, 0.2) 0px 0px 10px'}
         borderRadius={'10px'}
@@ -39,6 +40,8 @@ export default function Product(props) {
         
         <Image src={props.image} 
             borderRadius={'8px'}
+            // blur the image
+            filter={'blur(12px)'}
             objectFit={'cover'}
             w={['5rem', '8rem', '10rem']}
             h={['5rem', '8rem', '10rem']}
@@ -50,7 +53,7 @@ export default function Product(props) {
             justifyContent={'left'}
             alignItems={'left'}
             textAlign={'left'}
-            w={['15rem', '20rem', '25rem']}
+            w={['15rem', '20rem', '30rem']}
         >
             <Heading
                 fontSize={['2xl', '3xl', '4xl']}
@@ -60,15 +63,15 @@ export default function Product(props) {
                 overflow={'hidden'}
                 whiteSpace={'nowrap'}
             >
-                {props.title}
+                Coming Soon...
             </Heading>
 
             <Text
-                color={'brand.gray.500'}
+                color={'white'}
                 fontSize={'2xl'}
                 fontWeight={'medium'}
             >
-                ${props.price} + tax
+                $... + tax
             </Text>
 
             <Text
@@ -76,7 +79,7 @@ export default function Product(props) {
                 fontSize={'md'}
                 fontWeight={'medium'}
             >
-                {props.stock} in stock
+                ... in stock
             </Text>
 
             <HStack
@@ -89,7 +92,8 @@ export default function Product(props) {
                     variant={'solid'}
                     w={['6.5rem','10rem']}
                     size={['sm', 'md', 'lg']}
-                    isDisabled={!inStock}
+                    // isDisabled={!inStock}
+                    isDisabled={true}
                     onClick={
                         () => {
                             console.log('Add to cart')
@@ -104,6 +108,7 @@ export default function Product(props) {
                         leftIcon={<FaEye />}
                         colorScheme={'brand.alt.pink'}
                         variant={'outline'}
+                        isDisabled={true}
                         w={['6.5rem', '10rem']}
                         size={['sm', 'md', 'lg']}
                     >More Info</Button>

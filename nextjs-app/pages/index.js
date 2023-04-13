@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { ChakraProvider } from '@chakra-ui/provider'
 import theme from '@/styles/theme'
 import { Box, Heading, Text, VStack } from '@chakra-ui/layout'
-import { useColorMode, useColorModeValue } from '@chakra-ui/react'
+import { useColorMode, useColorModeValue, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import React from 'react'
 
@@ -12,10 +12,13 @@ import Product from '@/comps/product'
 import Hero from '@/comps/homeHero'
 import Footer from '@/comps/footer'
 
-export default function Home() {
+export default function Home(session) {
+
+	console.log(session)
 
 	const { toggleColorMode } = useColorMode();
   	const text = useColorModeValue('dark', 'light');
+	const toast = useToast()
 
 	const [products, setProducts] = React.useState([])
 
@@ -33,7 +36,16 @@ export default function Home() {
 				});
 
 				setProducts(tempArray)
+			}).catch((err) => {
+				toast({
+					title: "Error",
+					description: "Something went wrong, please refresh the page and try again.",
+					status: "error",
+					duration: 4000,
+					isClosable: true,
+				})
 			})
+
 
 		setTimeout(() => {
 			if (text === 'dark') {
@@ -105,7 +117,7 @@ export default function Home() {
 						</Heading> */}
 
 
-						{/* <VStack spacing={8}>
+						<VStack id='shop-main-page' spacing={8}>
 							{products.map((product) => {
 								return (
 									<Product 
@@ -118,7 +130,7 @@ export default function Home() {
 									/>
 								)
 							})}
-						</VStack> */}
+						</VStack>
 
 						<Box h={'2rem'} />
 
