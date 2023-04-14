@@ -47,6 +47,13 @@ export default function Home() {
 				// set the color mode to dark
 				toggleColorMode()
 			}
+		}, 1000)
+
+		setTimeout(() => {
+			if (text === 'dark') {
+				// set the color mode to dark
+				toggleColorMode()
+			}
 		}, 2000)
 
 		setTimeout(() => {
@@ -54,7 +61,21 @@ export default function Home() {
 				// set the color mode to dark
 				toggleColorMode()
 			}
-		}, 10000)
+		}, 3000)
+
+		setTimeout(() => {
+			if (text === 'dark') {
+				// set the color mode to dark
+				toggleColorMode()
+			}
+		}, 4000)
+
+		setTimeout(() => {
+			if (text === 'dark') {
+				// set the color mode to dark
+				toggleColorMode()
+			}
+		}, 5000)
 	}, [])
 	
 
