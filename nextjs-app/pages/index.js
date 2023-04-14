@@ -32,6 +32,7 @@ export default function Home() {
 				});
 
 				setProducts(tempArray)
+				console.log(products)
 			}).catch((err) => {
 				toast({
 					title: "Error",

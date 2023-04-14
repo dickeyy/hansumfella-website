@@ -12,17 +12,21 @@ import { FaMinus, FaPlus, FaShare, FaShoppingCart } from 'react-icons/fa'
 import Footer from '@/comps/footer'
 import AddToCartButton from '@/comps/addToCartButton'
 
-export default function Home() {
+export default function Home(props) {
 
-
+	console.log(props)
 	const toast = useToast()
 
 	const [product, setProduct] = React.useState(null)
 	const router = useRouter()
-    const { id } = router.query
 
 	const [ inStock, setInstock ] = React.useState(true)
     const [ stockColor, setStockColor ] = React.useState('green.200')
+
+	const [ isLoading, setIsLoading ] = React.useState(true)
+
+	
+	const { id } = router.query
 
 	const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
@@ -37,27 +41,37 @@ export default function Home() {
 	const dec = getDecrementButtonProps()
 	const input = getInputProps()
 
+	const getProduct = async (id) => {
+
+		
+	}
+
 	React.useEffect(() => {
-		setTimeout(() => {
-			if (!id) return
-			axios.get(`/api/fetch-product-by-id?id=${id}`)
-			.then((res) => {
-				console.log(res.data.product)
-				setProduct(res.data.product)
-			})
-			.catch((err) => {
-				console.log(err)
-			})
-		}, 1000)
+
+		console.log(router.query)
+
+		setTimeout(async () => {
+
+			if (id != undefined) {
+
+				console.log('fetching product')
+
+				const request = await fetch(`/api/fetch-product-by-id?productId=${id}`).then((res) => res.json())
+
+				setProduct(request.cartId.data.product)
+
+				setIsLoading(false)
+			}
+		}, 2000)
 
 		if (!product) return
-			if (product.variants[0].inventory_quantity <= 0) {
+			if (product.totalInventory <= 0) {
 				setInstock(false)
 				setStockColor('red.200')
-			} else if (product.variants[0].inventory_quantity <= 5) {
+			} else if (product.totalInventory <= 5) {
 				setStockColor('orange.200')
 			}
-	}, [])
+	}, [id])
 
   return (
     <ChakraProvider theme={theme}>
@@ -93,8 +107,16 @@ export default function Home() {
 			
 			<NavBar active={"Home"} />
 
-			{!product ? (
-				<Spinner />
+			{isLoading ? (
+				<Box h={'100vh'}
+					w="100vw"
+					display="flex"
+					justifyContent="center"
+					alignItems="center"
+					flexDirection="column"
+				>
+					<Spinner />
+				</Box>
 			) : (
 
 				<Box
@@ -128,7 +150,7 @@ export default function Home() {
 
 							>
 								<Image
-									src={product.images[0].src}
+									src={product.images.edges[0].node.originalSrc}
 									alt={product.title}
 									w="90%"
 									preserveAspectRatio="xMidYMid slice"
@@ -160,7 +182,7 @@ export default function Home() {
 										color="brand.gray.100"
 										mb="1rem"
 									>
-										${product.variants[0].price} USD
+										${product.variants.edges[0].node.price.amount} USD
 									</Heading>
 
 									<Text 
@@ -181,7 +203,7 @@ export default function Home() {
 									<br />
 
 									<Box 
-										dangerouslySetInnerHTML={{ __html: product.body_html }}
+										dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
 										fontSize="lg"
 										fontWeight="normal"
 										color="white"
@@ -206,7 +228,7 @@ export default function Home() {
 										color={stockColor}
 										mb="1rem"
 									>
-										{product.variants[0].inventory_quantity.toLocaleString()} left in stock
+										{product.totalInventory.toLocaleString()} left in stock
 									</Text>
 
 									<AddToCartButton
@@ -218,8 +240,8 @@ export default function Home() {
 										p={'2rem'}
 										mb="1rem"
 										quantity={input}
-										varientId={product.variants[0].admin_graphql_api_id}
-										isDisabled={product.variants[0].inventory_quantity <= 0}
+										varientId={product.variants.edges[0].node.id}
+										isDisabled={product.totalInventory <= 0}
 									/>
 
 									<Button
