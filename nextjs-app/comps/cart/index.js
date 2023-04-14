@@ -82,6 +82,19 @@ export default function Cart(props) {
 
             localCartData = await fetch('/api/create-cart').then((res) => res.json());
 
+            // if the cart id does not start with gid, then it is an error
+            if (!localCartData.cartId.startsWith('gid')) {
+                toast({
+                    id:"cart-toast-error-1",
+                    title: "Error",
+                    status: "error",
+                    description: `There was an error creating your cart. Please clear cookies and try again. `,
+                    isClosable: true,
+                    duration: 4000,
+                })
+                return
+            }
+
             setCart({
                 id: localCartData.cartId,
                 lines: [],
