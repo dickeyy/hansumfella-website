@@ -14,7 +14,6 @@ import AddToCartButton from '@/comps/addToCartButton'
 
 export default function Home(props) {
 
-	console.log(props)
 	const toast = useToast()
 
 	const [product, setProduct] = React.useState(null)

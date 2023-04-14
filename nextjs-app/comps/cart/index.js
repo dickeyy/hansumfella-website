@@ -8,6 +8,9 @@ export default function Cart(props) {
 
     const [cart, setCart] = useState({ id: null, lines: [] })
 
+    const [isCheckoutLoading, setIsCheckoutLoading] = useState(false)
+    const [isClearLoading, setIsClearLoading] = useState(false)
+
     // make a second drawer for the cart
     const { isOpen: isOpenCart, onOpen: onOpenCart, onClose: onCloseCart } = useDisclosure()
 
@@ -16,11 +19,17 @@ export default function Cart(props) {
     }
 
     const clearCart = () => {
+        setIsClearLoading(true)
+
         window.localStorage.removeItem('hansum:shopify:cart')
         window.localStorage.setItem('hansum:shopify:status', 'dirty')
+
+        setIsClearLoading(false)
     }
 
     const getCheckoutUrl = async () => {
+        setIsCheckoutLoading(true)
+
         const result = await fetch(`/api/create-checkout?cartId=${cart.id}`).then((res) => res.json())
 
         window.location.href = result.data.data.cart.checkoutUrl
@@ -53,12 +62,13 @@ export default function Cart(props) {
     useEffect(() => {
 
         async function getCart() {
+            setIsCheckoutLoading(false)
             let localCartData = JSON.parse(
                 window.localStorage.getItem('hansum:shopify:cart')
             )
 
             if (localCartData) {
-                const existingCart = await fetch(`/api/load-cart?cartId=${localCartData.cartId}`).then((res) => res.json())
+                    const existingCart = await fetch(`/api/load-cart?cartId=${localCartData.cartId}`).then((res) => res.json())
 
                 setCart({
                     id: localCartData.cartId,
@@ -104,9 +114,6 @@ export default function Cart(props) {
         
 
     }, [])
-
-    console.log(cart)
-
     
   return (
     <Box theme={theme}>
@@ -162,6 +169,7 @@ export default function Cart(props) {
                                         fontSize={'1rem'}
                                         fontWeight={'bold'}
                                         p={'1rem'}
+                                        key={index}
                                     >
 
                                         <IconButton id={item.node.id} as={FaTrash} size={'sm'} variant='outline' ml={'0.5rem'} p={1} onClick={() => {
@@ -189,10 +197,11 @@ export default function Cart(props) {
                                 <Heading>
                                     Total: ${Number(cart.estimatedCost).toFixed(2)}
                                 </Heading>
-                                <Button leftIcon={<FaStar />} colorScheme='brand.alt.pink' variant='solid' size='lg' w={'100%'} mt={'1rem'} onClick={() => {
+                                <Button leftIcon={<FaStar />} colorScheme='brand.alt.pink' variant='solid' size='lg' w={'100%'} mt={'1rem'} isLoading={isCheckoutLoading} onClick={() => {
                                     getCheckoutUrl()
                                 }}>Checkout</Button>
                                 <Button leftIcon={<FaTrash />} colorScheme='brand.alt.pink' variant='outline' size='lg' w={'100%'} mt={'1rem'}
+                                    isLoading={isClearLoading}
                                     onClick={() => (
                                         clearCart()
                                     )}

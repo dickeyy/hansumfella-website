@@ -82,7 +82,7 @@ export default function NavBar(props) {
                     mt={'0.2rem'}
                     
                 >
-                    <a href={'#shop-main-page'} >
+                    <a href={'/#shop-main-page'} >
                         <Text
                             fontSize={'1rem'}
                             fontWeight={'medium'}
@@ -145,7 +145,7 @@ export default function NavBar(props) {
                             <DrawerCloseButton size={'lg'} />
                             <DrawerHeader fontSize={50} fontWeight={700}>Pages</DrawerHeader>
                             <DrawerBody>
-                                <a href='#shop-main-page'>
+                                <a href='/#shop-main-page'>
                                     <Button colorScheme={'brand.alt.pink'} w={'100%'} variant={'solid'} size={'lg'} fontSize={'20'} fontWeight={700}>
                                         Shop
                                     </Button>
