@@ -5,6 +5,7 @@ import { RiRadioButtonLine } from 'react-icons/ri'
 
 import theme from '../../styles/theme.js'
 import React from 'react'
+import AddToCartButton from '../addToCartButton/index.js'
 
 export default function Product(props) {
 
@@ -37,10 +38,8 @@ export default function Product(props) {
         p={'0.8rem'}
     >
         
-        <Image src={'https://yt3.googleusercontent.com/LxcHrV0t8Rg-eNIyIPjjo14bwNkqg6jtp-HfzX31gSzbOVhH6DoNyg3b0dJIHy2VXRSrB8z75mc=s900-c-k-c0x00ffffff-no-rj'} 
+        <Image src={props.image} 
             borderRadius={'8px'}
-            // blur the image
-            filter={'blur(12px)'}
             objectFit={'cover'}
             w={['5rem', '8rem', '10rem']}
             h={['5rem', '8rem', '10rem']}
@@ -62,7 +61,7 @@ export default function Product(props) {
                 overflow={'hidden'}
                 whiteSpace={'nowrap'}
             >
-                Coming Soon...
+                {props.title}
             </Heading>
 
             <Text
@@ -70,7 +69,7 @@ export default function Product(props) {
                 fontSize={'2xl'}
                 fontWeight={'medium'}
             >
-                $... + tax
+                ${props.price} USD
             </Text>
 
             <Text
@@ -78,27 +77,21 @@ export default function Product(props) {
                 fontSize={'md'}
                 fontWeight={'medium'}
             >
-                ... in stock
+                {props.stock.toLocaleString()} in stock
             </Text>
 
             <HStack
                 mt={'0.5rem'}
             >
-
-                <Button
-                    leftIcon={<FaShoppingCart />}
+                <AddToCartButton 
                     colorScheme={'brand.alt.pink'}
                     variant={'solid'}
-                    w={['6.5rem','10rem']}
+                    w={['6.7rem','10rem']}
                     size={['sm', 'md', 'lg']}
-                    // isDisabled={!inStock}
-                    isDisabled={true}
-                    onClick={
-                        () => {
-                            console.log('Add to cart')
-                        }
-                    }
-                >Add to Cart</Button>
+                    isDisabled={!inStock}
+                    varientId={props.varientId}
+                    quantity={{value: 1}}
+                />
 
                 <a
                     href={`/product/${props.id}`}
@@ -107,8 +100,8 @@ export default function Product(props) {
                         leftIcon={<FaEye />}
                         colorScheme={'brand.alt.pink'}
                         variant={'outline'}
-                        isDisabled={true}
-                        w={['6.5rem', '10rem']}
+                        // isDisabled={true}
+                        w={['6.7rem', '10rem']}
                         size={['sm', 'md', 'lg']}
                     >More Info</Button>
                 </a>

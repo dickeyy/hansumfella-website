@@ -1,5 +1,4 @@
-import { Box, Button, ButtonGroup, ChakraProvider, Grid, GridItem, Heading, Hide, IconButton, Image, Spinner, Text } from '@chakra-ui/react'
-import dynamic from 'next/dynamic.js'
+import { Box, Button, ButtonGroup, ChakraProvider, Grid, GridItem, Heading, Hide, IconButton, Image, Spinner, Text, useToast } from '@chakra-ui/react'
 
 import theme from '../../styles/theme.js'
 
@@ -10,9 +9,6 @@ import { TwitchChat, TwitchPlayerNonInteractive } from 'react-twitch-embed';
 export default function Hero(props) {
 
     const [bgPos, setBgPos] = React.useState({ x: 0, y: 0 });
-    const [botStats, setBotStats] = React.useState({});
-    const [users, setUsers] = React.useState(0);
-    const [servers, setServers] = React.useState(0);
 
     React.useEffect(() => {
 
@@ -43,8 +39,8 @@ export default function Hero(props) {
             bgImage={'url(images/sprinkle-pink.png)'}
             bgPos={'static'}
             // zoom in on the background
-            bgSize={'120%'}
-            bgColor={'rgba(0,0,0,0.3)'}
+            bgSize={['', '', '', '120%']}
+            bgColor={'rgba(0,0,0,0.5)'}
             bgBlendMode={'overlay'}
             // make the background parralax
             bgAttachment={'fixed'}

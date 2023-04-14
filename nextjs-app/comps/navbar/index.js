@@ -6,15 +6,10 @@ import { FaEye, FaShieldAlt, FaShoppingCart, FaStar, FaTrash } from 'react-icons
 import { useRouter } from 'next/router'
 import theme from '../../styles/theme.js'
 
-import Cookies from 'universal-cookie';
+import Cart from '../cart/index.js';
 
 export default function NavBar(props) {
     const activePage = props.active
-
-    const cookies = new Cookies();
-
-    const [cmdsActive, setCmdsActive] = useState(false)
-    const [donateActive, setDonateActive] = useState(false)
 
 	const router = useRouter()
 
@@ -22,27 +17,9 @@ export default function NavBar(props) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const [cart, setCart] = useState([])
-
     const handleClick = () => {
         onOpen()
     }
-
-    // make a second drawer for the cart
-    const { isOpen: isOpenCart, onOpen: onOpenCart, onClose: onCloseCart } = useDisclosure()
-
-    const handleClickCart = () => {
-        onOpenCart()
-    }
-
-    const clearCart = () => {
-        cookies.set('cart', [], { path: '/' })
-        setCart([])
-    }
-
-    useEffect(() => {
-        setCart(cookies.get('cart'))
-    }, [])
 
     
   return (
@@ -108,13 +85,13 @@ export default function NavBar(props) {
                     <a href={'#shop-main-page'} >
                         <Text
                             fontSize={'1rem'}
-                            fontWeight={cmdsActive ? 'bold' : 'medium'}
+                            fontWeight={'medium'}
                             p={'0.5rem 1rem'}
                             _hover={{
                                 opacity: '0.4',
                             }}
-                            color={cmdsActive ? 'brand.brown.50' : 'white'}
-                            backgroundColor={cmdsActive ? 'brand.brown.900' : 'rgba(0, 0, 0, 0)'}
+                            color={'white'}
+                            backgroundColor={'rgba(0, 0, 0, 0)'}
                             borderRadius={'8px'}
                         >
                             Shop
@@ -123,13 +100,13 @@ export default function NavBar(props) {
                     <a href='https://streamlabs.com/hansumfella/tip' target='_blank' >
                         <Text
                             fontSize={'1rem'}
-                            fontWeight={donateActive ? 'bold' : 'medium'}
+                            fontWeight={'medium'}
                             p={'0.5rem 1rem'}
                             _hover={{
                                 opacity: '0.4',
                             }}
-                            color={donateActive ? 'brand.brown.50' : 'white'}
-                            backgroundColor={donateActive ? 'brand.brown.900' : 'rgba(0, 0, 0, 0)'}
+                            color={'white'}
+                            backgroundColor={'rgba(0, 0, 0, 0)'}
                             borderRadius={'8px'}
                         >
                             Donate
@@ -138,128 +115,7 @@ export default function NavBar(props) {
                 </Box>
             </Hide>
 
-                
-            <IconButton
-                aria-label='Shopping Cart'
-                as={FaShoppingCart }
-                p={'0.6rem'}
-                cursor={'pointer'}
-                variant={'solid'}
-                color={'brand.alt.pink.50'}
-                bgColor={'transparent'}
-                borderRadius={'8px'}
-                // put this on the right side
-                position={'absolute'}
-                right={'0'}
-                mt={'-0.2rem'}
-                mr={'0.7rem'}
-                size={'lg'}
-                onClick={() => (
-                    // open a drawer
-                    handleClickCart()
-                )}
-            >   
-            </IconButton>
-            <Drawer onClose={onCloseCart} isOpen={isOpenCart} size={'lg'}>
-                        <DrawerOverlay />
-                        <DrawerContent 
-                            borderLeftRadius={'8px'}
-                            backgroundColor={'rgba(180, 180, 180, 0.2)'}
-                            backdropFilter={'blur(15px)'}
-                            boxShadow={'rgba(28, 28, 28, 0.2) 0px 0px 10px'}
-                        >   
-                            <br></br>
-                            <br></br>
-                            <DrawerCloseButton size={'lg'} />
-                            <DrawerHeader fontSize={50} fontWeight={700}>Shopping Cart</DrawerHeader>
-                            <DrawerBody>
-                                {cart && cart.length > 0 ?
-                                    <Box>
-                                        {cart.map((item, index) => (
-                                            <Box
-                                                display={'flex'}
-                                                alignItems={'center'}
-                                                justifyContent={'center'}
-                                                w={'100%'}
-                                                h={'10rem'}
-                                                position={'relative'}
-                                                top={'0'}
-                                                left={'0'}
-                                                mt={'0.2rem'}
-                                                borderRadius={'8px'}
-                                                color={'white'}
-                                                borderWidth={'1px'}
-                                                fontSize={'1rem'}
-                                                fontWeight={'bold'}
-                                                p={'0.1rem 0.5rem'}
-                                            >
-                                                <Image src={item.image} alt='logo' w={'8rem'} h={'8rem'} p={0} borderRadius={'8px'} />
-                                                <Text
-                                                    fontSize={'xl'}
-                                                    fontWeight={'bold'}
-                                                    ml={'0.5rem'}
-                                                >
-                                                    {item.title}
-                                                </Text>
-
-                                            </Box>
-                                        ))}
-                                        <br></br> <br></br>
-                                        <Button leftIcon={<FaStar />} colorScheme='brand.alt.pink' variant='solid' size='lg' w={'100%'} mt={'1rem'}>Checkout</Button>
-                                        <Button leftIcon={<FaTrash />} colorScheme='brand.alt.pink' variant='outline' size='lg' w={'100%'} mt={'1rem'}
-                                            onClick={() => (
-                                                // clear cookie
-                                                clearCart()
-                                            )}
-                                        >Clear Cart</Button>
-                                    </Box>
-                                :
-                                    <Box
-                                        display={'flex'}
-                                        alignItems={'center'}
-                                        justifyContent={'center'}
-                                        w={'100%'}
-                                        h={'10rem'}
-                                        position={'relative'}
-                                        top={'0'}
-                                        left={'0'}
-                                        mt={'0.2rem'}
-                                        borderRadius={'8px'}
-                                        fontSize={'2xl'}
-                                        borderWidth={'1px'}
-                                        fontWeight={'bold'}
-                                        p={'0.1rem 0.5rem'}
-                                    >
-                                        Your cart is empty!
-                                    </Box>
-                                }
-                            </DrawerBody>
-                        </DrawerContent>
-                    </Drawer>
-
-            {cart && cart.length > 0 && 
-                <Box
-                    display={'flex'}
-                    alignItems={'center'}
-                    justifyContent={'center'}
-                    w={'fit-content'}
-                    h={'fit-content'}
-                    position={'absolute'}
-                    top={'0'}
-                    right={'0'}
-                    mt={'0.2rem'}
-                    mr={'0.2rem'}
-                    borderRadius={'50%'}
-                    backgroundColor={'brand.alt.pink.600'}
-                    color={'brand.alt.brown.50'}
-                    fontSize={'1rem'}
-                    fontWeight={'bold'}
-                    p={'0.1rem 0.5rem'}
-                >
-                    {cart.length}
-                </Box>
-            }
-            
+            <Cart />
 
             <Show breakpoint='(max-width: 530px)'>
                 <Box 

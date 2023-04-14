@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import { ChakraProvider } from '@chakra-ui/provider'
 import theme from '@/styles/theme'
 import { Box, Heading, Text, VStack } from '@chakra-ui/layout'
-import { useColorMode, useColorModeValue, useToast } from '@chakra-ui/react'
+import { ChakraProvider, useColorMode, useColorModeValue, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import React from 'react'
 
@@ -43,7 +42,6 @@ export default function Home() {
 				})
 			})
 
-
 		setTimeout(() => {
 			if (text === 'dark') {
 				// set the color mode to dark
@@ -66,14 +64,14 @@ export default function Home() {
 			<title>hansumfella | Home</title>
 			<meta name="description" content="he's so hansum" />
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
-			<link rel="icon" href="images/hansum-circle.png" />
+			<link rel="icon" href="https://hansumfella.com/images/hansum-circle.png" />
 
 			{/* //   <!-- Facebook Meta Tags --> */}
 			<meta property="og:url" content="https://hansumfella.com" />
 			<meta property="og:type" content="website" />
 			<meta property="og:title" content="hansumfella" />
 			<meta property="og:description" content="he's so hansum" />
-			<meta property="og:image" content="images/hansum-circle.png" />
+			<meta property="og:image" content="https://hansumfella.com/images/hansum-circle.png" />
 
 			{/* <!-- Twitter Meta Tags --> */}
 			<meta name="twitter:card" content="summary_small_image" />
@@ -81,7 +79,7 @@ export default function Home() {
 			<meta property="twitter:url" content="https://hansumfella.com" />
 			<meta name="twitter:title" content="hansumfella" />
 			<meta name="twitter:description" content="he's so hansum" />
-			<meta name="twitter:image" content="images/hansum-circle.png" />
+			<meta name="twitter:image" content="https://hansumfella.com/images/hansum-circle.png" />
 		</Head>
 
 		<Box>
@@ -130,6 +128,7 @@ export default function Home() {
 										price={product.variants[0].price}
 										id={product.id}
 										stock={product.variants[0].inventory_quantity}
+										varientId={product.variants[0].admin_graphql_api_id}
 									/>
 								)
 							})}
