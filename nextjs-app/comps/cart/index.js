@@ -1,4 +1,4 @@
-import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Heading, IconButton, Image, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Heading, IconButton, Image, Text, useDisclosure, useToast } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { FaShoppingCart, FaStar, FaTrash } from 'react-icons/fa'
 
@@ -7,6 +7,8 @@ import theme from '../../styles/theme.js'
 export default function Cart(props) {
 
     const [cart, setCart] = useState({ id: null, lines: [] })
+
+	const toast = useToast()
 
     const [isCheckoutLoading, setIsCheckoutLoading] = useState(false)
     const [isClearLoading, setIsClearLoading] = useState(false)
