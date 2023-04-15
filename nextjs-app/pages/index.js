@@ -20,6 +20,16 @@ export default function Home() {
 	const [products, setProducts] = React.useState([])
 
 	React.useEffect(() => {
+		
+		toast({
+			title: "Welcome!",
+			description: "If you find any bugs, please let me know on Discord (dickey#6969)",
+			status: "info",
+			colorScheme: 'pink',
+			duration: 3000,
+			isClosable: true,
+		})
+
 		axios.get('/api/fetch-products')
 			.then((res) => {
 

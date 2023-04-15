@@ -1,4 +1,4 @@
-import { Box, Button, ChakraProvider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Heading, Hide, IconButton, Image, Link, Show, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, ChakraProvider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Heading, Hide, IconButton, Image, Link, Show, Tag, Text, useDisclosure } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { GiHamburger, GiHamburgerMenu } from 'react-icons/gi';
 import { FaEye, FaShieldAlt, FaShoppingCart, FaStar, FaTrash } from 'react-icons/fa'
@@ -65,6 +65,7 @@ export default function NavBar(props) {
                         >
                             hansum
                         </Text>
+
                     </Hide>
                 </Box>
             </a>
