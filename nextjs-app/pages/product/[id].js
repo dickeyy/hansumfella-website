@@ -2,13 +2,12 @@ import Head from 'next/head'
 import theme from '@/styles/theme'
 import { Box, Heading, Text } from '@chakra-ui/layout'
 import { ChakraProvider, useToast, Grid, GridItem, Image, Spinner, useNumberInput, Button, Input, HStack, IconButton } from '@chakra-ui/react'
-import axios from 'axios'
 import React from 'react'
 import { useRouter } from 'next/router'
 
 // Components
 import NavBar from '@/comps/navbar'
-import { FaMinus, FaPlus, FaShare, FaShoppingCart } from 'react-icons/fa'
+import { FaMinus, FaPlus, FaShare } from 'react-icons/fa'
 import Footer from '@/comps/footer'
 import AddToCartButton from '@/comps/addToCartButton'
 
@@ -241,6 +240,7 @@ export default function Home(props) {
 										quantity={input}
 										varientId={product.variants.edges[0].node.id}
 										isDisabled={product.totalInventory <= 0}
+										productTitle={product.title}
 									/>
 
 									<Button

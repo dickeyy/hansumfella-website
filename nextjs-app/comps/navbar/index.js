@@ -1,7 +1,6 @@
-import { Box, Button, ChakraProvider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Heading, Hide, IconButton, Image, Link, Show, Tag, Text, useDisclosure } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
-import { GiHamburger, GiHamburgerMenu } from 'react-icons/gi';
-import { FaEye, FaShieldAlt, FaShoppingCart, FaStar, FaTrash } from 'react-icons/fa'
+import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Hide, Image, Show, Text, useDisclosure } from '@chakra-ui/react'
+import { useState } from 'react'
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 import { useRouter } from 'next/router'
 import theme from '../../styles/theme.js'
@@ -9,9 +8,6 @@ import theme from '../../styles/theme.js'
 import Cart from '../cart/index.js';
 
 export default function NavBar(props) {
-    const activePage = props.active
-
-	const router = useRouter()
 
     const [size, setSize] = useState('')
 

@@ -23,7 +23,7 @@ export default function Home() {
 		
 		toast({
 			title: "Welcome!",
-			description: "If you find any bugs, please let me know on Discord (dickey#6969)",
+			description: "If you find any bugs, let the developer know on Discord (dickey#6969).",
 			status: "info",
 			colorScheme: 'pink',
 			duration: 3000,

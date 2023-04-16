@@ -1,10 +1,10 @@
-import { Box, Button, ButtonGroup, ChakraProvider, Grid, GridItem, Heading, Hide, IconButton, Image, Spinner, Text, useToast } from '@chakra-ui/react'
+import { Box, ChakraProvider, Grid, GridItem, Heading, IconButton, Image, Text } from '@chakra-ui/react'
 
 import theme from '../../styles/theme.js'
 
 import React from 'react'
 import { FaDiscord, FaInstagram, FaTiktok, FaTwitch, FaTwitter, FaYoutube } from 'react-icons/fa';
-import { TwitchChat, TwitchPlayerNonInteractive } from 'react-twitch-embed';
+import { TwitchPlayerNonInteractive } from 'react-twitch-embed';
 
 export default function Hero(props) {
 
@@ -155,6 +155,7 @@ export default function Hero(props) {
                         }} channel={'hansumfella'}
                         noCookie={true}
                         />
+                        
                     </Box>
 
                 </Box>

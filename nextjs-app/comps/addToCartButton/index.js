@@ -1,6 +1,7 @@
-import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, IconButton, Image, Text, useDisclosure, useToast } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
-import { FaShoppingCart, FaStar, FaTrash } from 'react-icons/fa'
+import { Box, Button, useToast } from '@chakra-ui/react'
+import { useState } from 'react'
+import { event } from "nextjs-google-analytics";
+import { FaShoppingCart } from 'react-icons/fa'
 
 import theme from '../../styles/theme.js'
 
@@ -27,7 +28,7 @@ export default function AddToCartButton(props) {
             })
             return
         }
-        console.log(localCartData)
+
         const result = await fetch('/api/add-to-cart', {
             method: 'POST',
             body: JSON.stringify({
@@ -65,6 +66,13 @@ export default function AddToCartButton(props) {
 		})
 
         setIsLoading(false)
+
+        event({
+            action: "add_to_cart",
+            category: "ecommerce",
+            label: props.productTitle,
+            value: props.quantity.value,
+        })
 
 	}
 

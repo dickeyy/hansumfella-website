@@ -1,7 +1,5 @@
-import Head from 'next/head'
-import { Box, Button, ChakraProvider, HStack, Heading, Image, Text, useColorMode, useColorModeValue } from '@chakra-ui/react'
-import { FaEye, FaShieldAlt, FaShoppingCart, FaStar } from 'react-icons/fa'
-import { RiRadioButtonLine } from 'react-icons/ri'
+import { Box, Button, HStack, Heading, Image, Text } from '@chakra-ui/react'
+import { FaEye } from 'react-icons/fa'
 
 import theme from '../../styles/theme.js'
 import React from 'react'
@@ -91,6 +89,7 @@ export default function Product(props) {
                     isDisabled={!inStock}
                     varientId={props.varientId}
                     quantity={{value: 1}}
+                    productTitle={props.title}
                 />
 
                 <a

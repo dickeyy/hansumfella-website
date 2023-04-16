@@ -1,15 +1,12 @@
 import Head from 'next/head'
 import { ChakraProvider } from '@chakra-ui/provider'
 import theme from '@/styles/theme'
-import { Box, Heading, Text, VStack } from '@chakra-ui/layout'
+import { Box, Heading } from '@chakra-ui/layout'
 import { useColorMode, useColorModeValue } from '@chakra-ui/react'
-import axios from 'axios'
 import React from 'react'
 
 // Components
 import NavBar from '@/comps/navbar'
-import Product from '@/comps/product'
-import Hero from '@/comps/homeHero'
 import Footer from '@/comps/footer'
 
 export default function Terms() {

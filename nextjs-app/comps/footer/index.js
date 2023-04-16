@@ -1,4 +1,4 @@
-import { Box, Button, ChakraProvider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, Span, Heading, Hide, IconButton, Image, Link, Show, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Hide, Link, Show, Text } from '@chakra-ui/react'
 
 import theme from '../../styles/theme.js'
 
