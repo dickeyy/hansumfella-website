@@ -56,9 +56,13 @@ export default function Home(props) {
 
 				const request = await fetch(`/api/fetch-product-by-id?productId=${id}`).then((res) => res.json())
 
-				setProduct(request.cartId.data.product)
-
-				setIsLoading(false)
+				if (request.cartId.data.product == null) {
+					// redirect to 404
+					router.push('/404')
+				} else {
+					setProduct(request.cartId.data.product)
+					setIsLoading(false)
+				}
 			}
 		}, 2000)
 

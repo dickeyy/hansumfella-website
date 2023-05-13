@@ -1,8 +1,9 @@
-import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Heading, IconButton, Text, useDisclosure, useToast } from '@chakra-ui/react'
+import { Box, Button, ButtonGroup, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Heading, IconButton, Image, Text, useDisclosure, useToast } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import { FaShoppingCart, FaStar, FaTrash } from 'react-icons/fa'
+import { FaShoppingCart, FaSmile, FaStar, FaTrash } from 'react-icons/fa'
 
 import theme from '../../styles/theme.js'
+import { GiGluttonousSmile } from 'react-icons/gi'
 
 export default function Cart(props) {
 
@@ -190,7 +191,7 @@ export default function Cart(props) {
                                         <IconButton id={item.node.id} as={FaTrash} size={'sm'} variant='outline' ml={'0.5rem'} p={1} onClick={() => {
                                             removeLineItem(item.node.id)
                                         }} />
-
+                                        <Image src={item.node.merchandise.product.images.edges[0].node.originalSrc} alt={item.node.merchandise.product.title} w={'3rem'} h={'3rem'} ml={'0.5rem'} borderRadius={'0.5rem'} />
                                         <Text
                                             fontSize={'xl'}
                                             fontWeight={'normal'}
@@ -210,17 +211,24 @@ export default function Cart(props) {
                                 ))}
                                 <br></br> <br></br>
                                 <Heading>
-                                    Total: ${Number(cart.estimatedCost).toFixed(2)}
+                                    Total: ${Number(cart.estimatedCost).toFixed(2)} 
                                 </Heading>
+                                <Text 
+                                    color={'brand.gray.50'}
+                                >
+                                    Tax and shipping calculated at checkout
+                                </Text>
                                 <Button leftIcon={<FaStar />} colorScheme='brand.alt.pink' variant='solid' size='lg' w={'100%'} mt={'1rem'} isLoading={isCheckoutLoading} onClick={() => {
                                     getCheckoutUrl()
                                 }}>Checkout</Button>
-                                <Button leftIcon={<FaTrash />} colorScheme='brand.alt.pink' variant='outline' size='lg' w={'100%'} mt={'1rem'}
+                                
+                                <Button leftIcon={<FaTrash />} colorScheme='brand.alt.pink' variant='outline' size='lg' w={'100%'}  mt={'1rem'}
                                     isLoading={isClearLoading}
                                     onClick={() => (
                                         clearCart()
                                     )}
                                 >Clear Cart</Button>
+                                
                             </Box>
                         :
                             <Box
