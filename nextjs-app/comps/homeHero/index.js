@@ -85,37 +85,37 @@ export default function Hero(props) {
                         <Grid templateColumns={'repeat(3,2fr)'} gap={3}>
                             <GridItem>
                                 <a href='https://twitch.tv/hansumfella' target={'_blank'}>
-                                    <IconButton icon={<FaTwitch />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaTwitch />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
 
                             <GridItem>
                                 <a href='https://discord.com/invite/dQRZeCJv' target={'_blank'}>
-                                    <IconButton icon={<FaDiscord />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaDiscord />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
 
                             <GridItem>
                                 <a href='https://www.tiktok.com/@hansumfellaclips' target={'_blank'}>
-                                    <IconButton icon={<FaTiktok />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaTiktok />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
 
                             <GridItem>
                                 <a href='https://www.youtube.com/@hansumfella' target={'_blank'}>
-                                    <IconButton icon={<FaYoutube />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaYoutube />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
 
                             <GridItem>
                                 <a href='https://www.instagram.com/hansumfellaaa/' target={'_blank'}>
-                                    <IconButton icon={<FaInstagram />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaInstagram />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
 
                             <GridItem>
                                 <a href='https://twitter.com/HansumFellaLIVE' target={'_blank'}>
-                                    <IconButton icon={<FaTwitter />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} mb={'1rem'} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
+                                    <IconButton icon={<FaTwitter />} colorScheme={'brand.alt.pink'} ml={['1rem', '1rem','0','0']} variant={'outline'} size={'lg'} fontSize={'3xl'} fontWeight={'bold'} p={'2rem 1.5rem'}></IconButton>
                                 </a>
                             </GridItem>
                         </Grid>
