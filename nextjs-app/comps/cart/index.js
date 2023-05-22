@@ -1,9 +1,7 @@
 import { Box, Button, ButtonGroup, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Heading, IconButton, Image, Text, useDisclosure, useToast } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { FaShoppingCart, FaSmile, FaStar, FaTrash } from 'react-icons/fa'
-
 import theme from '../../styles/theme.js'
-import { GiGluttonousSmile } from 'react-icons/gi'
 
 export default function Cart(props) {
 
@@ -61,7 +59,7 @@ export default function Cart(props) {
 
         window.localStorage.setItem('hansum:shopify:status', 'dirty')
     }
-
+    console.log(cart)
     useEffect(() => {
 
         async function getCart() {
@@ -71,14 +69,16 @@ export default function Cart(props) {
             )
 
             if (localCartData) {
-                    const existingCart = await fetch(`/api/load-cart?cartId=${localCartData.cartId}`).then((res) => res.json())
-
+                const existingCart = await fetch(`/api/load-cart?cartId=${localCartData.cartId}`).then((res) => res.json())
+                
                 setCart({
                     id: localCartData.cartId,
                     lines: existingCart.data.data.cart.lines.edges,
                     checkoutUrl: existingCart.data.data.cart.checkoutUrl,
                     estimatedCost: existingCart.data.data.cart.cost.subtotalAmount.amount,
                 })
+
+                console.log(cart)
 
                 return
             }
@@ -110,6 +110,8 @@ export default function Cart(props) {
                 JSON.stringify(localCartData)
             )
 
+            console.log(cart)
+
         }
 
         getCart()
@@ -121,13 +123,10 @@ export default function Cart(props) {
                 getCart()
                 window.localStorage.setItem('hansum:shopify:status', 'clean')
             }
-        }, 200)
-
+        }, 100)
         return () => {
             clearInterval(washInterval)
         }
-
-        
 
     }, [])
     
@@ -186,26 +185,76 @@ export default function Cart(props) {
                                         fontWeight={'bold'}
                                         p={'1rem'}
                                         key={index}
+                                        flexDir={'column'}
                                     >
+                                        <Box
+                                            display={'flex'}
+                                            flexDir={'row'}
+                                            alignItems={'center'}
+                                            justifyContent={'flex-start'}
+                                            w={'100%'}
+                                        >
+                                            <Box
+                                                display={'flex'}
+                                                flexDir={'row'}
+                                                alignItems={'center'}
+                                                justifyContent={'flex-start'}
+                                            >
+                                                <IconButton id={item.node.id} as={FaTrash} size={'sm'} variant='outline' ml={'0.5rem'} p={1} onClick={() => {
+                                                    removeLineItem(item.node.id)
+                                                }} />
+                                                <Image src={item.node.merchandise.product.images.edges[0].node.originalSrc} alt={item.node.merchandise.product.title} w={'3rem'} h={'3rem'} ml={'0.5rem'} borderRadius={'0.5rem'} />
+                                                
+                                            </Box>
 
-                                        <IconButton id={item.node.id} as={FaTrash} size={'sm'} variant='outline' ml={'0.5rem'} p={1} onClick={() => {
-                                            removeLineItem(item.node.id)
-                                        }} />
-                                        <Image src={item.node.merchandise.product.images.edges[0].node.originalSrc} alt={item.node.merchandise.product.title} w={'3rem'} h={'3rem'} ml={'0.5rem'} borderRadius={'0.5rem'} />
-                                        <Text
-                                            fontSize={'xl'}
-                                            fontWeight={'normal'}
-                                            ml={'0.5rem'}
-                                        >
-                                            {item.node.quantity}x
-                                        </Text>
-                                        <Text
-                                            fontSize={'xl'}
-                                            fontWeight={'normal'}
-                                            ml={'0.5rem'}
-                                        >
-                                            {item.node.merchandise.product.title}
-                                        </Text>
+                                            <Box
+                                                display={'flex'}
+                                                flexDir={'row'}
+                                                alignItems={'center'}
+                                                justifyContent={'flex-start'}
+                                            >
+                                                <Text
+                                                    fontSize={'xl'}
+                                                    fontWeight={'normal'}
+                                                    ml={'0.5rem'}
+                                                >
+                                                    {item.node.quantity}x
+                                                </Text>
+                                                <Text
+                                                    fontSize={'xl'}
+                                                    fontWeight={'normal'}
+                                                    ml={'0.5rem'}
+                                                >
+                                                    {item.node.merchandise.product.title}
+                                                </Text>
+                                            </Box>
+
+                                            
+                                        </Box>
+
+                                        <Box
+                                                display={'flex'}
+                                                flexDir={'row'}
+                                                alignItems={'center'}
+                                                justifyContent={'flex-start'}
+                                                w={'65%'}
+                                            >
+                                                <Text
+                                                    fontSize={'xl'}
+                                                    fontWeight={'normal'}
+                                                    ml={'0.5rem'}
+                                                >
+                                                    Size: 
+                                                </Text>
+                                                <Text
+                                                    fontSize={'xl'}
+                                                    ml={'0.5rem'}
+                                                    fontWeight={'bold'}
+                                                >
+                                                    {item.node.merchandise.title === 'Default Title' ? 'One Size' : item.node.merchandise.title}
+                                                </Text>
+                                                
+                                            </Box>
 
                                     </Box>
                                 ))}

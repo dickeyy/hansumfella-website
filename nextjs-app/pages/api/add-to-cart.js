@@ -23,6 +23,7 @@ export default async function handler(req, res) {
                                     merchandise {
                                         ... on ProductVariant {
                                             id
+                                            title
                                             product {
                                                 title
                                             }
@@ -41,7 +42,7 @@ export default async function handler(req, res) {
         },
     });
 
-
+    console.log(data.data.cartLinesAdd.cart.lines.edges[0].node.merchandise)
 
     res.status(200).json({
         data

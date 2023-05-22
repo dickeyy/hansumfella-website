@@ -4,11 +4,15 @@ import { FaEye } from 'react-icons/fa'
 import theme from '../../styles/theme.js'
 import React from 'react'
 import AddToCartButton from '../addToCartButton/index.js'
+import SizeSelectorSmall from '../sizeSelectorSmall/index.js'
 
 export default function Product(props) {
 
     const [ inStock, setInstock ] = React.useState(true)
     const [ stockColor, setStockColor ] = React.useState('green.200')
+    const [ selectedSize, setSelectedSize ] = React.useState(null)
+    const [id, setId] = React.useState(props.id)
+    const [selectedVariant, setSelectedVariant] = React.useState(props.varientId)
 
     React.useEffect(() => {
 
@@ -20,6 +24,17 @@ export default function Product(props) {
         }
 
     }, [])
+
+    const onSizeSelected = (size) => {
+        setSelectedSize(size)
+        // find the variant id that matches the selected size
+        props.variants.forEach(variant => {
+            console.log(variant)
+            if (variant.option1 === size) {
+                setSelectedVariant(variant.admin_graphql_api_id)
+            }
+        })
+    }
 
   return (
     <Box
@@ -70,13 +85,15 @@ export default function Product(props) {
                 ${props.price} USD
             </Text>
 
-            <Text
+            {/* <Text
                 color={stockColor}
                 fontSize={'md'}
                 fontWeight={'medium'}
             >
                 {props.stock.toLocaleString()} in stock
-            </Text>
+            </Text> */}
+
+            <SizeSelectorSmall variants={props.variants} onSizeSelected={onSizeSelected} />
 
             <HStack
                 mt={'0.5rem'}
@@ -87,13 +104,13 @@ export default function Product(props) {
                     w={['6.7rem','10rem']}
                     size={['sm', 'md', 'lg']}
                     isDisabled={!inStock}
-                    varientId={props.varientId}
+                    varientId={selectedVariant}
                     quantity={{value: 1}}
                     productTitle={props.title}
                 />
 
                 <a
-                    href={`/product/${props.id}`}
+                    href={`/product/${id}`}
                 >
                     <Button
                         leftIcon={<FaEye />}

@@ -21,6 +21,7 @@ export default async function handler(req, res) {
                                 merchandise {
                                     ... on ProductVariant {
                                         id
+                                        title
                                         product {
                                             title
                                             images(first: 1) {

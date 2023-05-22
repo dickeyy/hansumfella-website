@@ -4,12 +4,14 @@ import { Box, Heading, Text } from '@chakra-ui/layout'
 import { ChakraProvider, useToast, Grid, GridItem, Image, Spinner, useNumberInput, Button, Input, HStack, IconButton } from '@chakra-ui/react'
 import React from 'react'
 import { useRouter } from 'next/router'
+import { FaMinus, FaPlus, FaShare } from 'react-icons/fa'
 
 // Components
 import NavBar from '@/comps/navbar'
-import { FaMinus, FaPlus, FaShare } from 'react-icons/fa'
 import Footer from '@/comps/footer'
 import AddToCartButton from '@/comps/addToCartButton'
+import SizeSelectorBig from '@/comps/sizeSelectorBig'
+import ImageSelector from '@/comps/imageSelector'
 
 export default function Home(props) {
 
@@ -20,10 +22,12 @@ export default function Home(props) {
 
 	const [ inStock, setInstock ] = React.useState(true)
     const [ stockColor, setStockColor ] = React.useState('green.200')
-
+	const [ selectedSize, setSelectedSize ] = React.useState(null)
+	const [ selectedVariant, setSelectedVariant ] = React.useState(null)
+	const [ selectedImage, setSelectedImage ] = React.useState(product?.images.edges[0].node.originalSrc)
+	
 	const [ isLoading, setIsLoading ] = React.useState(true)
 
-	
 	const { id } = router.query
 
 	const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
@@ -39,11 +43,21 @@ export default function Home(props) {
 	const dec = getDecrementButtonProps()
 	const input = getInputProps()
 
-	const getProduct = async (id) => {
+	const onSizeSelected = (size) => {
+        setSelectedSize(size)
+        // find the variant id that matches the selected size
+        product.variants.edges.forEach(variant => {
+            if (variant.node.title === size) {
+                setSelectedVariant(variant.node.id)
+            }
+        })
+    }
 
-		
+	const onImageSelected = (image) => {
+		setSelectedImage(image.node.originalSrc)
 	}
 
+	console.log(product)
 	React.useEffect(() => {
 
 		console.log(router.query)
@@ -61,6 +75,8 @@ export default function Home(props) {
 					router.push('/404')
 				} else {
 					setProduct(request.cartId.data.product)
+					setSelectedVariant(request.cartId.data.product.variants.edges[0].node.id)
+					setSelectedImage(request.cartId.data.product.images.edges[0].node.originalSrc)
 					setIsLoading(false)
 				}
 			}
@@ -149,16 +165,28 @@ export default function Home(props) {
 								display="flex"
 								justifyContent="center"
 								alignItems="center"
-
+								flexDir={'column'}
 							>
 								<Image
-									src={product.images.edges[0].node.originalSrc}
+									src={selectedImage}
 									alt={product.title}
 									w="90%"
 									preserveAspectRatio="xMidYMid slice"
 									objectFit="cover"
 									borderRadius='8px'
 								/>
+
+								<Box
+									display="flex"
+									justifyContent="center"
+									alignItems="center"
+									flexDir={'column'}
+									w="90%"
+									mt={'1rem'}
+								>
+									<ImageSelector images={product.images.edges} onImageSelected={onImageSelected} />
+								</Box>
+								
 							</GridItem>
 							<GridItem colSpan={['3','3','2','2']}>
 								<Box
@@ -214,6 +242,15 @@ export default function Home(props) {
 										p={'1rem'}
 										bgColor={'#262736'}
 									/>
+									<Text 
+										fontSize="xl"
+										fontWeight="normal"
+										color="brand.gray.100"
+										mb="0.5rem"
+									>
+										Size
+									</Text>
+									<SizeSelectorBig variants={product.variants.edges} onSizeSelected={onSizeSelected} />
 
 									<Text
 										fontSize="xl"
@@ -228,6 +265,7 @@ export default function Home(props) {
 										fontSize="xl"
 										fontWeight="normal"
 										color={stockColor}
+										mt={'0.5rem'}
 										mb="1rem"
 									>
 										{product.totalInventory.toLocaleString()} left in stock
@@ -242,7 +280,7 @@ export default function Home(props) {
 										p={'2rem'}
 										mb="1rem"
 										quantity={input}
-										varientId={product.variants.edges[0].node.id}
+										varientId={selectedVariant}
 										isDisabled={product.totalInventory <= 0}
 										productTitle={product.title}
 									/>

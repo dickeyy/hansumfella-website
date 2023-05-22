@@ -14,9 +14,10 @@ export default async function handler(req, res) {
                     title
                     description
                     descriptionHtml
+                    availableForSale
                     handle
                     totalInventory
-                    images(first: 1) {
+                    images(first: 10) {
                         edges {
                             node {
                                 id
@@ -27,11 +28,12 @@ export default async function handler(req, res) {
                         }
                     }
                     totalInventory
-                    variants(first: 1) {
+                    variants(first: 100) {
                         edges {
                             node {
                                 id
                                 title
+                                availableForSale
                                 price {
                                     amount
                                 }
@@ -56,7 +58,7 @@ export default async function handler(req, res) {
 
     if (!data) {
         res.status(500).json({
-            'message': 'Error creating cart'
+            'message': 'Error fetching product data.'
         });
         return
     }

@@ -27,12 +27,16 @@ export default function Home() {
 				let tempArray = []
 
 				res.data.products.data.forEach(item => {
-					if (item.status == 'active') {
-						tempArray.push(item)
-					}
+					// if (item.status == 'active') {
+					// 	tempArray.push(item)
+					// }
+
+					tempArray.push(item)
 				});
 
 				setProducts(tempArray)
+
+				console.log(tempArray)
 			}).catch((err) => {
 				toast({
 					title: "Error",
@@ -151,6 +155,7 @@ export default function Home() {
 										id={product.id}
 										stock={product.variants[0].inventory_quantity}
 										varientId={product.variants[0].admin_graphql_api_id}
+										variants={product.variants}
 									/>
 								)
 							})}
