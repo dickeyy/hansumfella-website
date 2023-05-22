@@ -27,11 +27,11 @@ export default function Home() {
 				let tempArray = []
 
 				res.data.products.data.forEach(item => {
-					// if (item.status == 'active') {
-					// 	tempArray.push(item)
-					// }
+					if (item.status == 'active') {
+						tempArray.push(item)
+					}
 
-					tempArray.push(item)
+					// tempArray.push(item)
 				});
 
 				setProducts(tempArray)
