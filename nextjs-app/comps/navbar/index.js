@@ -59,7 +59,7 @@ export default function NavBar(props) {
                                 opacity: '0.4',
                             }}
                         >
-                            hansum
+                            hansumfella
                         </Text>
 
                     </Hide>
