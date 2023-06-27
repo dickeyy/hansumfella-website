@@ -281,6 +281,7 @@ export default function Home(props) {
 										w="100%"
 										p={'2rem'}
 										mb="1rem"
+										pt={'1rem'}
 										quantity={input}
 										varientId={selectedVariant}
 										isDisabled={product.totalInventory <= 0}
