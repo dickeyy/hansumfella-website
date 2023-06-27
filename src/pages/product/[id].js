@@ -104,7 +104,7 @@ export default function Home(props) {
 			<meta property="og:type" content="website" />
 			<meta property="og:title" content="hansumfella" />
 			<meta property="og:description" content="he's so hansum" />
-			<meta property="og:image" content="https://hansumfella.com/images/hansum-circle.png" />
+			<meta property="og:image" content={selectedImage} />
 
 			{/* <!-- Twitter Meta Tags --> */}
 			<meta name="twitter:card" content="summary_small_image" />
@@ -112,7 +112,7 @@ export default function Home(props) {
 			<meta property="twitter:url" content="https://hansumfella.com" />
 			<meta name="twitter:title" content="hansumfella" />
 			<meta name="twitter:description" content="he's so hansum" />
-			<meta name="twitter:image" content="https://hansumfella.com/images/hansum-circle.png" />
+			<meta name="twitter:image" content={selectedImage} />
 		</Head>
 
 		<Box 
@@ -260,16 +260,18 @@ export default function Home(props) {
 									>
 										{product.category}
 									</Text>
-
-									<Text
-										fontSize="xl"
-										fontWeight="normal"
-										color={stockColor}
-										mt={'0.5rem'}
-										mb="1rem"
-									>
-										{product.totalInventory.toLocaleString()} left in stock
-									</Text>
+									
+									{product.totalInventory <= 50 ? (
+										<Text
+											fontSize="xl"
+											fontWeight="normal"
+											color={stockColor}
+											mt={'0.5rem'}
+											mb="1rem"
+										>
+											{product.totalInventory.toLocaleString()} left in stock
+										</Text>
+									) : null}
 
 									<AddToCartButton
 										colorScheme="brand.alt.pink"

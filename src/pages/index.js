@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import theme from '@/styles/theme'
-import { Box, Heading, Text, VStack } from '@chakra-ui/layout'
+import { Box, Heading, Text, Grid } from '@chakra-ui/layout'
 import { ChakraProvider, useColorMode, useColorModeValue, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import React from 'react'
@@ -134,17 +134,8 @@ export default function Home() {
 						flexDirection="column"
 						p={'0.5rem'}
 					>
-						 {/* <Heading
-							fontSize="3xl"
-							fontWeight="bold"
-							color="brand.gray.100"
-							mb={8}
-						>
-							Merch Coming Soon...
-						</Heading> */}
 
-
-						<VStack id='shop-main-page' spacing={8}>
+						<Grid templateColumns={["repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={6}>
 							{products.map((product) => {
 								return (
 									<Product 
@@ -159,7 +150,24 @@ export default function Home() {
 									/>
 								)
 							})}
-						</VStack>
+						</Grid>
+
+						{/* <VStack id='shop-main-page' spacing={8}>
+							{products.map((product) => {
+								return (
+									<Product 
+										title={product.title}
+										image={product.images[0].src}
+										type={product.product_type}
+										price={product.variants[0].price}
+										id={product.id}
+										stock={product.variants[0].inventory_quantity}
+										varientId={product.variants[0].admin_graphql_api_id}
+										variants={product.variants}
+									/>
+								)
+							})}
+						</VStack> */}
 
 						<Box h={'2rem'} />
 

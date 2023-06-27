@@ -48,6 +48,7 @@ export default function Product(props) {
         backdropFilter={'blur(10px)'}
         boxShadow={'rgba(28, 28, 28, 0.2) 0px 0px 10px'}
         borderRadius={'10px'}
+        h={"full"}
         p={'0.8rem'}
     >
         
@@ -97,6 +98,7 @@ export default function Product(props) {
 
             <HStack
                 mt={'0.5rem'}
+                w={'full'}
             >
                 <AddToCartButton 
                     colorScheme={'brand.alt.pink'}
@@ -106,6 +108,8 @@ export default function Product(props) {
                     isDisabled={!inStock}
                     varientId={selectedVariant}
                     quantity={{value: 1}}
+                    py={"7"}
+                    
                     productTitle={props.title}
                 />
 
@@ -118,6 +122,7 @@ export default function Product(props) {
                         variant={'outline'}
                         // isDisabled={true}
                         w={['6.7rem', '10rem']}
+                        py={"7"}
                         size={['sm', 'md', 'lg']}
                     >More Info</Button>
                 </a>
