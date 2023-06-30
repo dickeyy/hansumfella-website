@@ -47,40 +47,7 @@ export default function Home() {
 				})
 			})
 
-		setTimeout(() => {
-			if (text === 'dark') {
-				// set the color mode to dark
-				toggleColorMode()
-			}
-		}, 1000)
-
-		setTimeout(() => {
-			if (text === 'dark') {
-				// set the color mode to dark
-				toggleColorMode()
-			}
-		}, 2000)
-
-		setTimeout(() => {
-			if (text === 'dark') {
-				// set the color mode to dark
-				toggleColorMode()
-			}
-		}, 3000)
-
-		setTimeout(() => {
-			if (text === 'dark') {
-				// set the color mode to dark
-				toggleColorMode()
-			}
-		}, 4000)
-
-		setTimeout(() => {
-			if (text === 'dark') {
-				// set the color mode to dark
-				toggleColorMode()
-			}
-		}, 5000)
+		toggleColorMode()
 	}, [])
 	
 
@@ -135,7 +102,7 @@ export default function Home() {
 						p={'0.5rem'}
 					>
 
-						<Grid templateColumns={["repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={6}>
+						<Grid id='shop-main-page' templateColumns={["repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={6}>
 							{products.map((product) => {
 								return (
 									<Product 

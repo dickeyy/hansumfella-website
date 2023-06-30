@@ -1,4 +1,4 @@
-import { Box, Button, HStack, Text } from "@chakra-ui/react";
+import { Box, Button, HStack, Text, Wrap, WrapItem } from "@chakra-ui/react";
 import React from "react";
 
 export default function SizeSelectorSmall(props) {
@@ -6,7 +6,7 @@ export default function SizeSelectorSmall(props) {
     const [selectedSize, setSelectedSize] = React.useState(null);
     const [sizeable, setSizeable] = React.useState(false);
     const [sizes, setSizes] = React.useState([])
-    console.log(props.variants)
+
     React.useEffect(() => {
         if (props.variants.length > 1) {
             setSizeable(true);
@@ -31,22 +31,24 @@ export default function SizeSelectorSmall(props) {
     }, [selectedSize]);
 
     return (
-        <HStack>
+        <Wrap flexWrap={"wrap"} gap={2}>
             
             {sizeable ? (
                 sizes.map((size, index) => {
                     return (
-                        <Button
-                            key={index}
-                            onClick={() => {
-                                setSelectedSize(size);
-                            }}
-                            disabled={props.variants[index].inventory_quantity > 0 ? false : true}
-                            variant={selectedSize === size ? "solid" : "outline"}
-                            size="md"
-                        >
-                            {size}
-                        </Button>
+                        <WrapItem>
+                            <Button
+                                key={index}
+                                onClick={() => {
+                                    setSelectedSize(size);
+                                }}
+                                disabled={props.variants[index].inventory_quantity > 0 ? false : true}
+                                variant={selectedSize === size ? "solid" : "outline"}
+                                size="md"
+                            >
+                                {size}
+                            </Button>
+                        </WrapItem>
                     );
                 }
                 )
@@ -61,7 +63,7 @@ export default function SizeSelectorSmall(props) {
             )}
 
 
-        </HStack>
+        </Wrap>
     )
 
 }

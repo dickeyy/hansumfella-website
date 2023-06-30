@@ -1,4 +1,4 @@
-import { Box, Button, HStack, Text } from "@chakra-ui/react";
+import { Box, Button, HStack, Text, Wrap, WrapItem } from "@chakra-ui/react";
 import React from "react";
 
 export default function SizeSelectorBig(props) {
@@ -31,28 +31,31 @@ export default function SizeSelectorBig(props) {
     }, [selectedSize]);
 
     return (
-        <HStack
-            spacing={'0.5rem'}
+        <Wrap
             justifyContent={['center', 'center', 'left']}
             alignItems={['center', 'center', 'left']}
             textAlign={['center', 'center', 'left']}
             w={'100%'}
+            wrap={'wrap'}
+            gap={2}
         >
             
             {sizeable ? (
                 sizes.map((size, index) => {
                     return (
-                        <Button
-                            key={index}
-                            onClick={() => {
-                                setSelectedSize(size);
-                            }}
-                            isDisabled={props.variants[index].node.availableForSale === false}
-                            variant={selectedSize === size ? "solid" : "outline"}
-                            size="md"
-                        >
-                            {size}
-                        </Button>
+                        <WrapItem>
+                            <Button
+                                key={index}
+                                onClick={() => {
+                                    setSelectedSize(size);
+                                }}
+                                isDisabled={props.variants[index].node.availableForSale === false}
+                                variant={selectedSize === size ? "solid" : "outline"}
+                                size="md"
+                            >
+                                {size}
+                            </Button>
+                        </WrapItem>
                     );
                 }
                 )
@@ -68,7 +71,7 @@ export default function SizeSelectorBig(props) {
             )}
 
 
-        </HStack>
+        </Wrap>
     )
 
 }
