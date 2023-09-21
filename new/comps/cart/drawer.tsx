@@ -9,7 +9,7 @@ export default function CartDrawer(props:any) {
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-side">
                 <label htmlFor="my-drawer" className="drawer-overlay w-screen h-screen"></label>
-                <ul className="menu p-6 sm:w-1/2 w-full min-h-screen text-base-content bg-base-300 border border-zinc-800  rounded-lg flex flex-col ">
+                <ul className="menu p-6 sm:w-1/2 w-full min-h-screen text-base-content bg-base-200 border border-zinc-800  rounded-lg flex flex-col ">
                 
                     <div className="flex flex-row justify-between items-center mb-5">
                         <div className="flex flex-col">

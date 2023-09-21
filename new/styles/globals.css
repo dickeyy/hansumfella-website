@@ -9,7 +9,7 @@
   justify-center
   backdrop-blur-md */
   background-color: rgba(180, 180, 180, 0.2);
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(10px);
   box-shadow: rgba(28, 28, 28, 0.2) 0px 0px 10px;
 }
