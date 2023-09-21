@@ -1,7 +1,6 @@
 import '@shopify/shopify-api/adapters/node';
 import {ApiVersion, shopifyApi} from '@shopify/shopify-api';
 import { restResources } from "@shopify/shopify-api/rest/admin/2023-01";
-import fetch from 'node-fetch'
 
 import dotenv from 'dotenv';
 
