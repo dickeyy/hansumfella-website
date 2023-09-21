@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.glassEffect {
+  /* make a glass effect for containers */
+  /* bg-zinc-500/20
+  justify-center
+  backdrop-blur-md */
+  background-color: rgba(180, 180, 180, 0.2);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  box-shadow: rgba(28, 28, 28, 0.2) 0px 0px 10px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* configure scroll bar */
+::-webkit-scrollbar {
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+/* Change the color of the scroll thumb */
+::-webkit-scrollbar-thumb {
+  background: #3e2134;
+  border-radius: 0.5rem;
+}
