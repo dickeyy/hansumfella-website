@@ -10,8 +10,7 @@ export default function Page() {
 			className={`flex min-h-screen flex-col items-center justify-center px-4 ${inter.className}`}
 			data-theme="synthwave"
 		>
-            <SEOHead title="404" />
-            <Navbar />
+            <SEOHead title="404 - Page Not Found" />
             <img src="/images/hansum-maid.jpg" className="w-96 rounded-lg" />
             <h1 className="text-2xl font-bold mt-5">We couldn't find that page...</h1>
             <p className="text-lg font-normal text-zinc-300">So heres a picture of fella</p>
