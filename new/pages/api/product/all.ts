@@ -10,6 +10,9 @@ export default async function handler(req:any, res:any) {
 
     const products = await shopify.rest.Product.all({session});
 
+    // filter out the products that are not published
+    products.data = products.data.filter((product: any) => product.status === 'active');
+
     res.status(200).json({
         products
     });

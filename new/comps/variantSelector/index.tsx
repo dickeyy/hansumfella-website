@@ -5,6 +5,7 @@ export default function VariantSelector(props:any) {
             {props.variants?.map((variant:any) => (
                 <button className={`btn normal-case ${props.variant.id === variant.node.id ? 'btn-primary' : 'btn-neutral'}`}
                     onClick={() => props.setVariant(variant.node)}
+                    disabled={variant.node.availableForSale === false}
                 >
                     {variant.node.title}
                 </button>

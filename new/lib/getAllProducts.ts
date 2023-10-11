@@ -8,6 +8,9 @@ async function getAllProducts() {
 
     const { products } = await req.json();
 
+    // filter out products that are not published
+    products.data = products.data.filter((product: any) => product.status === 'active');
+
     return products.data;
 }
 

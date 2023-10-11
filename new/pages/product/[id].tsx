@@ -52,10 +52,20 @@ export default function Page(props:any) {
     const [quantity, setQuantity] = useState(1)
     const [variant, setVariant] = useState(props.product.variants.edges[0].node)
     const [variantCount, setVariantCount] = useState(props.product.variants.edges.length)
+    const [isAvailable, setIsAvailable] = useState(false)
 
     const [showToast, setShowToast] = useState(false)
     const [toastTitle, setToastTitle] = useState('')
     const [toastType, setToastType] = useState('success')
+
+    useEffect(() => {
+        // for each variant, check if it's available, if any of them are, set isAvailable to true
+        props.product.variants.edges.forEach((variant:any) => {
+            if (variant.node.availableForSale) {
+                setIsAvailable(true)
+            }
+        })
+    })
 
     return (
         <main
@@ -82,6 +92,12 @@ export default function Page(props:any) {
                     <div className="flex flex-col">
                         <h1 className="text-4xl font-bold">{props.product.title}</h1>
                         <h1 className="text-2xl font-medium text-primary mt-4">${props.product.variants.edges[0].node.price.amount}</h1>
+
+                        {isAvailable ? (
+                            null
+                        ) : (
+                            <h1 className="text-xl font-normal text-error mt-4">Out of Stock</h1>
+                        )}
                     </div>
 
                     <div className="flex flex-col mt-8 w-full">
@@ -103,7 +119,7 @@ export default function Page(props:any) {
                     )}
 
                     <div className="flex flex-col mt-8 w-full">
-                        <AddToCartButton product={props.product} quantity={quantity} variant={variant} disabled={variantCount > 1 && variant == null || quantity < 1 || quantity > 99}
+                        <AddToCartButton product={props.product} quantity={quantity} variant={variant} disabled={variantCount > 1 && variant == null || quantity < 1 || quantity > 99} isOutOfStock={isAvailable === false}
                         setShowToast={setShowToast} setToastTitle={setToastTitle} setToastType={setToastType}
                         />
 

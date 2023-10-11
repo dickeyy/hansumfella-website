@@ -53,7 +53,7 @@ export default function AddToCartButton(props:any) {
     return (
 
         <button className="btn btn-primary btn-lg normal-case" onClick={addToCart}
-            disabled={isDisabled}
+            disabled={isDisabled || props.isOutOfStock}
         >
             <FaCartPlus className="text-xl" /> Add to Cart
         </button>
