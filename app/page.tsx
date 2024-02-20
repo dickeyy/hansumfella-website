@@ -1,11 +1,15 @@
-import Image from "next/image";
+import Footer from "@/components/footer";
+import Hero from "@/components/hero";
+import Navbar from "@/components/navbar";
+import ProductList from "@/components/product-list";
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <h1 className="text-6xl font-bold text-center">
-                Welcome to <a href="https://nextjs.org">Next.js!</a>
-            </h1>
+        <main className="flex min-h-screen flex-col items-center px-24">
+            <Navbar active="shop" />
+            <Hero />
+            <ProductList />
+            <Footer />
         </main>
     );
 }
