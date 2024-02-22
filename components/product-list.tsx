@@ -17,9 +17,7 @@ export default async function ProductList() {
             <h1 className="text-3xl font-semibold">All Products</h1>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <Suspense fallback={<Skeleton className="h-12 w-12"></Skeleton>}>
-                    {products.map((product) => (
-                        <Product key={product.id} product={product} />
-                    ))}
+                    {products?.map((product) => <Product key={product?.id} product={product} />)}
                 </Suspense>
             </div>
         </div>
