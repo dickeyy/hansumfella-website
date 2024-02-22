@@ -1,7 +1,12 @@
 import axios from "axios";
 
 // set the api url to the current window domain
-const apiURL = window.location.origin;
+let apiURL: string;
+if (typeof window !== "undefined") {
+    apiURL = window.location.origin;
+} else {
+    apiURL = "https://hansumfellla.com";
+}
 
 async function createCart(): Promise<string | null> {
     try {

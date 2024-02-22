@@ -1,7 +1,13 @@
 import { SpecificProductType } from "@/types/specific-product";
 import axios from "axios";
 
-const apiURL = window.location.origin;
+// set the api url to the current window domain
+let apiURL: string;
+if (typeof window !== "undefined") {
+    apiURL = window.location.origin;
+} else {
+    apiURL = "https://hansumfellla.com";
+}
 
 async function getProductById(id: string): Promise<SpecificProductType | null> {
     try {
