@@ -4,7 +4,6 @@ async function getAllProducts() {
         if (!req.ok) throw new Error("Failed to fetch products");
 
         const products = await req.json();
-        console.log(products);
 
         // filter out products that are not published
         products.data = products.data.filter((product: any) => product.status === "active");

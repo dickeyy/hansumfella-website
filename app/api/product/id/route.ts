@@ -7,7 +7,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const id = searchParams.get("id");
 
     let globalId = `gid://shopify/Product/${id}`;
-    console.log(globalId);
+
     try {
         const data = await sendShopifyStorefrontRequest({
             query: `

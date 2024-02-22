@@ -1,11 +1,11 @@
 "use client";
 
-import { ProductType } from "@/types/product";
+import { GenralProductType } from "@/types/general-product";
 import Image from "next/image";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { useRouter } from "next/navigation";
 
-export default function Product({ product }: { product: ProductType }) {
+export default function Product({ product }: { product: GenralProductType }) {
     const router = useRouter();
 
     return (

@@ -1,4 +1,4 @@
-type ProductType = {
+type GenralProductType = {
     id: number;
     title: string;
     body_html: string;
@@ -13,13 +13,13 @@ type ProductType = {
     tags: string;
     status: string;
     admin_graphql_api_id: string;
-    variants: VariantType[];
-    options: OptionType[];
-    images: ImageType[];
-    image: ImageType;
+    variants: GeneralVariantType[];
+    options: GeneralOptionType[];
+    images: GeneralImageType[];
+    image: GeneralImageType;
 };
 
-type ImageType = {
+type GeneralImageType = {
     id: number;
     alt?: string;
     position: number;
@@ -33,7 +33,7 @@ type ImageType = {
     variant_ids: number[];
 };
 
-type VariantType = {
+type GeneralVariantType = {
     id: number;
     product_id: number;
     title: string;
@@ -62,7 +62,7 @@ type VariantType = {
     image_id: number;
 };
 
-type OptionType = {
+type GeneralOptionType = {
     id: number;
     product_id: number;
     name: string;
@@ -70,4 +70,4 @@ type OptionType = {
     values: string[];
 };
 
-export type { ProductType, ImageType, VariantType, OptionType };
+export type { GenralProductType, GeneralImageType, GeneralVariantType, GeneralOptionType };
