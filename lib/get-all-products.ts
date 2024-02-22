@@ -1,17 +1,17 @@
+import axios from "axios";
+
 // set the api url to the current window domain
-let apiURL: string;
-if (typeof window !== "undefined") {
-    apiURL = window.location.origin;
-} else {
-    apiURL = "https://hansumfellla.com";
-}
+const apiURL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
 async function getAllProducts() {
     try {
-        const req = await fetch(apiURL + "/api/product/all");
-        if (!req.ok) throw new Error("Failed to fetch products");
+        const req = await axios.get(`${apiURL}/api/product/all`);
 
-        const products = await req.json();
+        if (req.status !== 200) {
+            return null;
+        }
+
+        const products = await req.data;
 
         // filter out products that are not published
         products.data = products.data.filter((product: any) => product.status === "active");
