@@ -1,8 +1,11 @@
 import axios from "axios";
 
+// set the api url to the current window domain
+const apiURL = window.location.origin;
+
 async function createCart(): Promise<string | null> {
     try {
-        const req = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/cart/create`);
+        const req = await axios.get(`${apiURL}/api/cart/create`);
         if (req.status === 200) {
             return req.data.cartId;
         }
@@ -16,7 +19,7 @@ async function createCart(): Promise<string | null> {
 
 async function addToCart(lines: any[], cartId: string): Promise<Boolean> {
     try {
-        const req = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/cart/add`, {
+        const req = await axios.post(`${apiURL}/api/cart/add`, {
             cartId,
             lines
         });
@@ -33,7 +36,7 @@ async function addToCart(lines: any[], cartId: string): Promise<Boolean> {
 
 async function loadCart(cartId: string): Promise<any> {
     try {
-        const req = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/cart/load`, {
+        const req = await axios.post(`${apiURL}/api/cart/load`, {
             cartId
         });
         if (req.status === 200) {
@@ -50,7 +53,7 @@ async function loadCart(cartId: string): Promise<any> {
 
 async function removeFromCart(cartId: string, lineId: string): Promise<Boolean> {
     try {
-        const req = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/cart/remove`, {
+        const req = await axios.post(`${apiURL}/api/cart/remove`, {
             cartId,
             lineIds: [lineId]
         });
@@ -67,7 +70,7 @@ async function removeFromCart(cartId: string, lineId: string): Promise<Boolean> 
 
 async function getCheckoutURL(cartId: string): Promise<string | null> {
     try {
-        const req = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/cart/checkout`, {
+        const req = await axios.post(`${apiURL}/api/cart/checkout`, {
             cartId
         });
         if (req.status === 200) {
