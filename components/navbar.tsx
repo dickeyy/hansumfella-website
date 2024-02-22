@@ -6,7 +6,7 @@ import { ThemeToggle } from "./theme-toggle";
 
 export default function Navbar({ active }: { active?: "shop" | "donate" }) {
     return (
-        <nav className="fixed top-0 z-50 flex w-[100%] items-center justify-between rounded-[0px] border bg-muted p-1 sm:top-3 sm:w-[98%] sm:rounded-lg">
+        <nav className="fixed top-0 z-50 flex w-[100%] items-center justify-between rounded-[0px] border bg-card p-1 sm:top-3 sm:w-[98%] sm:rounded-lg">
             <div className="flex items-center gap-4">
                 <Image src="/hansum.png" alt="logo" width={28} height={28} className="rounded-md" />
                 <div className="flex items-center gap-4 text-sm font-normal">
