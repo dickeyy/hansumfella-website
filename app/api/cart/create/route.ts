@@ -1,6 +1,8 @@
 import shopify, { sendShopifyStorefrontRequest } from "@/lib/shopify";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request: Request, response: NextResponse) {
     try {
         const data: any = await sendShopifyStorefrontRequest({
