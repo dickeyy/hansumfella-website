@@ -18,15 +18,14 @@ const useCartStore = create<CartState>()(
                 cart: null
             }),
             {
-                name: "cart-storage"
+                name: "cart-storage",
+                getStorage: () => localStorage
             }
         )
     )
 );
 
 useCartStore.subscribe(async (oldState, newState) => {
-    // console.log("oldState", oldState);
-    // console.log("newState", newState);
     if (oldState.cartId !== newState.cartId) {
         // reset the state
         useCartStore.setState({
