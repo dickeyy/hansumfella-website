@@ -1,12 +1,7 @@
 import axios from "axios";
 
 // set the api url to the current window domain
-let apiURL: string;
-if (typeof window !== "undefined") {
-    apiURL = window.location.origin;
-} else {
-    apiURL = "https://hansumfellla.com";
-}
+const apiURL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
 async function createCart(): Promise<string | null> {
     try {
