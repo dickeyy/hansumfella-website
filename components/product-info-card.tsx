@@ -13,6 +13,11 @@ export default function ProductInfoCard({ product }: { product: SpecificProductT
     const [quantity, setQuantity] = useState(1);
     const [isOutOfStock, setIsOutOfStock] = useState(false);
 
+    const USDollar = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+    });
+
     useEffect(() => {
         setIsOutOfStock(selectedVariant.availableForSale === false);
     }, [selectedVariant]);
@@ -25,7 +30,8 @@ export default function ProductInfoCard({ product }: { product: SpecificProductT
                 </h1>
                 <div className="flex w-full items-start gap-2">
                     <p className="text-lg font-medium" aria-label="Price">
-                        ${selectedVariant.price.amount}{" "}
+                        {/* ${selectedVariant.price.amount} */}
+                        {USDollar.format(selectedVariant.price.amount)}{" "}
                     </p>
                     <p
                         className={`text-lg font-medium ${isOutOfStock ? "text-red-500" : ""}`}
@@ -71,7 +77,8 @@ export default function ProductInfoCard({ product }: { product: SpecificProductT
                                                     : ""
                                             }`}
                                         >
-                                            {variant.node.title} - ${variant.node.price.amount}
+                                            {variant.node.title} -{" "}
+                                            {USDollar.format(variant.node.price.amount)}
                                         </SelectItem>
                                     ))}
                                 </SelectContent>

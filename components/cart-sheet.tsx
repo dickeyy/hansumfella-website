@@ -76,7 +76,7 @@ export default function CartSheet({
                                             <div
                                                 key={edge?.node?.id}
                                                 className="flex w-full cursor-pointer items-start justify-start gap-2 rounded-lg border bg-secondary p-2
-                                            transition-all duration-200 ease-in-out hover:bg-destructive hover:text-destructive-foreground hover:line-through
+                                            transition-all duration-200 ease-in-out hover:bg-destructive hover:text-destructive-foreground
                                             "
                                                 onClick={() => {
                                                     remove(edge?.node?.id);
@@ -90,7 +90,10 @@ export default function CartSheet({
                                                         {edge?.node?.merchandise?.product?.title}
                                                     </p>
                                                     <p className="text-md font-light text-muted-foreground">
-                                                        {edge?.node?.merchandise?.title}
+                                                        {edge?.node?.merchandise?.title ==
+                                                        "Default Title"
+                                                            ? ""
+                                                            : edge?.node?.merchandise?.title}
                                                     </p>
                                                 </div>
                                             </div>
