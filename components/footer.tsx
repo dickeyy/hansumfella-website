@@ -6,7 +6,11 @@ export default function Footer() {
             </p>
             <p className="text-sm text-muted-foreground">
                 Made with ❤️ by{" "}
-                <a href="https://dickey.gg" target="_blank" className="hover:underline">
+                <a
+                    href="https://dickey.gg"
+                    target="_blank"
+                    className="underline transition-all duration-200 ease-in-out hover:text-foreground"
+                >
                     dickey
                 </a>
             </p>
