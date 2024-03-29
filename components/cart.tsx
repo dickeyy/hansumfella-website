@@ -24,6 +24,14 @@ export default function Cart() {
                         cart: cart.cartId.data.cart,
                         state: "clean"
                     });
+                } else {
+                    // if something went wrong, reset the cart
+                    useCartStore.setState({
+                        cartId: "",
+                        cartLineItems: [],
+                        cart: null,
+                        state: "clean"
+                    });
                 }
             });
         }
