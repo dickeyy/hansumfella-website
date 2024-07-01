@@ -1,0 +1,28 @@
+---
+import Navbar from "@/components/Navbar.astro";
+import "@/styles/global.css";
+import "@fontsource-variable/rubik";
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const { title, description } = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description ? description : "Hansumfella Merch"} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body class="m-0 p-0">
+        <Navbar />
+        <slot />
+    </body>
+</html>
