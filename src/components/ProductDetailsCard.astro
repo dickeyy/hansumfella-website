@@ -1,0 +1,98 @@
+---
+import type { z } from "astro/zod";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "./ui/card";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import VariantSelector from "./VariantSelector";
+import type { ProductResult } from "@/lib/schema";
+import { ShoppingBasketIcon } from "lucide-react";
+
+interface Props {
+    product: z.infer<typeof ProductResult>;
+}
+
+const { product } = Astro.props as Props;
+
+let variant = product?.variants?.nodes[0];
+let quantity = 1;
+let isLoading = false;
+---
+
+<Card className="flex h-fit w-full flex-col bg-zinc-800/20">
+    <CardHeader>
+        <CardTitle className="text-2xl font-bold">{product?.title}</CardTitle>
+        <CardDescription className="text-md"
+            >{
+                variant?.availableForSale ? (
+                    "$" + parseFloat(variant?.price?.amount ?? "0.00").toFixed(2)
+                ) : (
+                    <p class="gap-2 text-red-500">
+                        <span class="mr-2 line-through">
+                            $ {parseFloat(variant?.price?.amount ?? "0.00").toFixed(2)}
+                        </span>{" "}
+                        Out of stock
+                    </p>
+                )
+            }</CardDescription
+        >
+    </CardHeader>
+    <CardContent>
+        <div class="flex flex-col items-start gap-8">
+            <div
+                class="prose prose-sm max-w-none text-sm font-normal text-foreground/80"
+                set:html={product?.descriptionHtml}
+            />
+
+            <div class="flex w-full flex-col items-start gap-4">
+                <div class="flex w-full flex-col items-start gap-2">
+                    {
+                        product?.variants?.nodes && product?.variants?.nodes.length > 1 && (
+                            <>
+                                <p class="text-sm font-light text-foreground/80">
+                                    Select a variant
+                                </p>
+                                <VariantSelector
+                                    selectedVariant={variant}
+                                    product={product}
+                                    client:load
+                                />
+                            </>
+                        )
+                    }
+
+                    <p class="text-sm font-light text-foreground/80">Quantity</p>
+                    <div
+                        class="flex w-full flex-row items-center gap-2 rounded-md border bg-input/20"
+                    >
+                        <Button variant="ghost"> - </Button>
+                        <Input
+                            type="number"
+                            onChange={(e) => (quantity = parseInt(e.target.value))}
+                            value={quantity}
+                            min={1}
+                            max={100}
+                            className="rounded-none border-0 bg-transparent focus-visible:outline-none focus-visible:ring-0"
+                        />
+                        <Button variant="ghost"> + </Button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </CardContent>
+    <CardFooter className="mt-8">
+        <Button className="w-full" disabled={isLoading || variant?.availableForSale === false}>
+            {
+                variant?.availableForSale ? (
+                    <>
+                        <ShoppingBasketIcon className="mr-2 inline-block size-5 disabled:cursor-not-allowed" />
+                        <p>
+                            Add {quantity} Item{quantity > 1 ? "s" : ""} to Basket
+                        </p>
+                    </>
+                ) : (
+                    "Out of stock"
+                )
+            }
+        </Button>
+    </CardFooter>
+</Card>

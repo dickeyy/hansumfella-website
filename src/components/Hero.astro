@@ -3,7 +3,9 @@ import TwitchEmbed from "./TwitchEmbed";
 import SocialIcons from "./SocialIcons.astro";
 ---
 
-<div class="flex w-full flex-1 flex-row items-center justify-between gap-0 px-4 md:px-16">
+<div
+    class="flex min-h-screen w-full flex-1 flex-row items-center justify-between gap-0 px-4 md:px-16"
+>
     <div class="flex w-full flex-col items-start gap-4 md:w-1/2">
         <h1 class="text-4xl font-bold leading-[1.2] text-foreground md:text-6xl">
             The most <span class="text-primary">handsome</span> fella on Twitch.
@@ -15,6 +17,6 @@ import SocialIcons from "./SocialIcons.astro";
         <SocialIcons size="size-8 md:size-10" />
     </div>
     <div class="hidden w-1/2 rounded-lg border border-border/40 shadow md:flex">
-        <TwitchEmbed client:load />
+        <!-- <TwitchEmbed client:load /> -->
     </div>
 </div>
