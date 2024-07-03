@@ -8,9 +8,11 @@ interface Props {
     title: string;
     description?: string;
     ogImage?: string;
+    showFooter?: boolean;
+    showNavbar?: boolean;
 }
 
-const { title, description, ogImage } = Astro.props as Props;
+const { title, description, ogImage, showFooter = true, showNavbar = true } = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -79,10 +81,10 @@ const { title, description, ogImage } = Astro.props as Props;
         <title>{title}</title>
     </head>
     <body class="m-0 flex min-h-screen flex-col p-0 font-sans">
-        <Navbar />
+        {showNavbar && <Navbar />}
         <main class="flex-grow">
             <slot />
         </main>
-        <Footer />
+        {showFooter && <Footer />}
     </body>
 </html>
