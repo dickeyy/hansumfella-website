@@ -1,22 +1,30 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
 export default function VariantSelector({
+    disabled,
     selectedVariant,
-    product
+    product,
+    setSelectedVariant
 }: {
+    disabled: boolean;
     selectedVariant: any;
     product: any;
+    setSelectedVariant: (variant: any) => void;
 }) {
     return (
-        <Select aria-label="Select a variant">
-            <SelectTrigger className="w-full bg-input/20">
+        <Select
+            disabled={disabled}
+            aria-label="Select a variant"
+            onValueChange={(variant: any) => setSelectedVariant(variant)}
+        >
+            <SelectTrigger className="h-fit max-h-fit w-full bg-input/20 py-2">
                 <SelectValue placeholder={selectedVariant?.title} />
             </SelectTrigger>
             <SelectContent>
                 {product.variants.nodes.map((variant: any) => (
                     <SelectItem
                         key={variant.id}
-                        value={variant.id}
+                        value={variant}
                         aria-label={variant.title}
                         disabled={variant.availableForSale === false}
                         className={`${

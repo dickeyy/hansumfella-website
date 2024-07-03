@@ -13,7 +13,7 @@ const { product } = Astro.props as Props;
 <a href={`/product/${product?.handle}`} class="group h-full">
     <Card className="flex h-full flex-col justify-between bg-zinc-800/20">
         <CardHeader>
-            <CardTitle className="text-xl font-bold">{product?.title}</CardTitle>
+            <CardTitle className="text-xl font-medium">{product?.title}</CardTitle>
             <CardDescription className="text-md"
                 >${
                     parseFloat(product?.variants?.nodes[0]?.price?.amount ?? "0.00").toFixed(2)

@@ -8,7 +8,8 @@ import react from "@astrojs/react";
 export default defineConfig({
     output: "server",
     adapter: node({
-        mode: "standalone"
+        mode: "standalone",
+        port: 3000
     }),
     image: {
         domains: ["shopify.com"]

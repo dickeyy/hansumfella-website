@@ -6,10 +6,9 @@ import {
     CreateCartMutation,
     AddCartLinesMutation,
     GetCartQuery,
-    RemoveCartLinesMutation,
-    ProductRecommendationsQuery
+    RemoveCartLinesMutation
 } from "./graphql";
-import { ProductResult } from "./schema";
+import { CartResult, ProductResult } from "./schema";
 
 // Make a request to Shopify's GraphQL API  and return the data object from the response body as JSON data.
 const makeShopifyRequest = async (
@@ -18,11 +17,13 @@ const makeShopifyRequest = async (
     buyerIP: string = ""
 ) => {
     const isSSR = import.meta.env.SSR;
+
     const apiUrl = `https://${config.shopify.shop}/api/${config.shopify.apiVersion}/graphql.json`;
 
     function getOptions() {
-        const privateShopifyAccessToken = config.shopify.adminAccessToken;
-        const publicShopifyAccessToken = config.shopify.accessToken;
+        const privateShopifyAccessToken = config.shopify.privateAccessToken;
+        const publicShopifyAccessToken = config.shopify.publicAccessToken;
+
         const options = {
             method: "POST",
             headers: {},
@@ -90,4 +91,52 @@ export const getProductByHandle = async (handle: string, buyerIP: string = "") =
     const productResult = ProductResult.parse(product);
 
     return productResult;
+};
+
+// Create a cart and add a line item to it and return the cart object
+export const createCart = async (id: string, quantity: number) => {
+    const data = await makeShopifyRequest(CreateCartMutation, { id, quantity });
+    const { cartCreate } = data;
+    const { cart } = cartCreate;
+    const parsedCart = CartResult.parse(cart);
+
+    return parsedCart;
+};
+
+// Add a line item to an existing cart (by ID) and return the updated cart object
+export const addCartLines = async (id: string, merchandiseId: string, quantity: number) => {
+    const data = await makeShopifyRequest(AddCartLinesMutation, {
+        cartId: id,
+        merchandiseId,
+        quantity
+    });
+    const { cartLinesAdd } = data;
+    const { cart } = cartLinesAdd;
+
+    const parsedCart = CartResult.parse(cart);
+
+    return parsedCart;
+};
+
+// Remove line items from an existing cart (by IDs) and return the updated cart object
+export const removeCartLines = async (id: string, lineIds: string[]) => {
+    const data = await makeShopifyRequest(RemoveCartLinesMutation, {
+        cartId: id,
+        lineIds
+    });
+    const { cartLinesRemove } = data;
+    const { cart } = cartLinesRemove;
+    const parsedCart = CartResult.parse(cart);
+
+    return parsedCart;
+};
+
+// Get a cart by its ID and return the cart object
+export const getCart = async (id: string) => {
+    const data = await makeShopifyRequest(GetCartQuery, { id });
+
+    const { cart } = data;
+    const parsedCart = CartResult.parse(cart);
+
+    return parsedCart;
 };

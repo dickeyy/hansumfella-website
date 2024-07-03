@@ -1,11 +1,12 @@
 ---
-import CartButton from "./CartButton.astro";
+import CartButton from "./CartButton";
+import CartSheet from "./CartSheet";
 
 const donateLink = "https://streamlabs.com/hansumfella/tip";
 ---
 
-<div class="fixed top-2 mx-auto flex w-screen items-center justify-center">
-    <nav
+<nav class="fixed top-2 z-10 mx-auto flex w-screen items-center justify-center">
+    <div
         class="glass-blur flex w-[98%] items-center justify-between rounded-md border bg-zinc-800/20 p-1 shadow-sm sm:w-[95.8%]"
     >
         <div class="flex items-center gap-4">
@@ -24,6 +25,7 @@ const donateLink = "https://streamlabs.com/hansumfella/tip";
                 >Donate</a
             >
         </div>
-        <CartButton />
-    </nav>
-</div>
+        <CartButton client:load />
+        <CartSheet client:load />
+    </div>
+</nav>
