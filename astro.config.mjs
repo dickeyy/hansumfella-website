@@ -8,15 +8,14 @@ import react from "@astrojs/react";
 export default defineConfig({
     output: "server",
     adapter: node({
-        mode: "standalone",
-        port: 3000
+        mode: "standalone"
     }),
     image: {
         domains: ["shopify.com"]
     },
     integrations: [
         tailwind({
-            applyBaseStyles: false
+            applyBaseStyles: true
         }),
         react()
     ]

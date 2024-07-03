@@ -42,9 +42,9 @@ FROM base
 COPY --from=build /app/node_modules /app/node_modules
 COPY --from=build /app/dist /app/dist
 
-ENV PORT=3000
+ENV PORT=4321
 ENV HOST=0.0.0.0
 
 # Start the server by default, this can be overwritten at runtime
-EXPOSE 3000
+EXPOSE 4321
 CMD [ "node", "./dist/server/entry.mjs" ]

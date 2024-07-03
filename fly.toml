@@ -1,15 +1,15 @@
-# fly.toml app configuration file generated for hansumfella on 2024-07-02T22:31:35-06:00
+# fly.toml app configuration file generated for hf-merch on 2024-07-02T23:06:49-06:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'hansumfella'
+app = 'hf-merch'
 primary_region = 'ord'
 
 [build]
 
 [http_service]
-  internal_port = 3000
+  internal_port = 4321
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
