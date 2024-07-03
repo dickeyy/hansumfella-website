@@ -12,8 +12,7 @@ import { cart, isCartSheetOpen, removeCartItems } from "@/stores/cart-store";
 import { ScrollArea } from "./ui/scroll-area";
 import type { z } from "astro/zod";
 import type { CartItemResult, CartResult } from "@/lib/schema";
-import { FrownIcon, MinusIcon, StarIcon, TrashIcon } from "lucide-react";
-import { useState } from "react";
+import { FrownIcon, StarIcon, TrashIcon } from "lucide-react";
 
 export default function CartSheet() {
     const isOpen = useStore(isCartSheetOpen);
@@ -41,7 +40,10 @@ export default function CartSheet() {
                             </p>
                         </div>
                         <Button className="w-full" asChild size="lg">
-                            <a href={c?.checkoutUrl} rel="noreferrer">
+                            <a
+                                href={c?.lines.nodes.length > 0 ? c?.checkoutUrl : "#"}
+                                rel="noreferrer"
+                            >
                                 <StarIcon className="mr-2 size-5 fill-primary-foreground disabled:cursor-not-allowed" />
                                 Checkout
                             </a>

@@ -1,14 +1,7 @@
 import type { ProductResult } from "@/lib/schema";
 import { cn } from "@/lib/utils";
 import type { z } from "astro/zod";
-import { useEffect, useState } from "react";
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious
-} from "./ui/carousel";
+import { useState } from "react";
 import { Card, CardContent } from "./ui/card";
 
 export default function ProductImages({ product }: { product: z.infer<typeof ProductResult> }) {

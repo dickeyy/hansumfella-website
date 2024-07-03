@@ -2,7 +2,7 @@ import { ShoppingBasketIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { useStore } from "@nanostores/react";
 import { cart, initCart, isCartSheetOpen } from "@/stores/cart-store";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function CartButton() {
     const isOpen = useStore(isCartSheetOpen);
