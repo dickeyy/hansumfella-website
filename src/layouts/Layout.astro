@@ -1,0 +1,48 @@
+---
+import Navbar from "@/components/Navbar.astro";
+import Footer from "@/components/Footer.astro";
+import "@/styles/global.css";
+import "@fontsource-variable/rubik";
+
+interface Props {
+    title: string;
+    description?: string;
+    ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description ? description : "Hansumfella Merch"} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
+        <!-- open graph -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description || "Hansumfella Merch"} />
+        <meta property="og:image" content={ogImage || "/og-image.png"} />
+        <meta property="og:url" content={Astro.url} />
+
+        <!-- twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@hansumfella" />
+        <meta name="twitter:creator" content="@hansumfella" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description || "Hansumfella Merch"} />
+        <meta name="twitter:image" content={ogImage || "/og-image.png"} />
+
+        <title>{title}</title>
+    </head>
+    <body class="m-0 flex min-h-screen flex-col p-0 font-sans">
+        <Navbar />
+        <main class="flex-grow">
+            <slot />
+        </main>
+        <Footer />
+    </body>
+</html>
