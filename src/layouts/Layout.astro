@@ -17,14 +17,51 @@ const { title, description, ogImage } = Astro.props as Props;
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content={description ? description : "Hansumfella Merch"} />
+        <meta
+            name="description"
+            content={description ? description : "The most handsome fella on Twitch"}
+        />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <meta name="generator" content={Astro.generator} />
+        <meta name="robots" content="index, follow" />
+        <meta
+            name="keywords"
+            content="
+            Hansumfella,
+            handsome,
+            fella,
+            merch,
+            merchandise,
+            shirt,
+            socks,
+            hoodie,
+            flag,
+            website,
+            twitch,
+            content,
+            creator,
+            hansum,
+            dickey,
+            youtube,
+            youtuber,
+            streamer,
+            socks,
+            hansumfellalive,
+            tiktok,
+            handsome
+            guy,
+            hansum
+            guy"
+        />
+
         <!-- open graph -->
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={description || "Hansumfella Merch"} />
+        <meta
+            property="og:description"
+            content={description || "The most handsome fella on Twitch"}
+        />
         <meta property="og:image" content={ogImage || "/og-image.png"} />
         <meta property="og:url" content={Astro.url} />
 
@@ -33,7 +70,10 @@ const { title, description, ogImage } = Astro.props as Props;
         <meta name="twitter:site" content="@hansumfella" />
         <meta name="twitter:creator" content="@hansumfella" />
         <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description || "Hansumfella Merch"} />
+        <meta
+            name="twitter:description"
+            content={description || "The most handsome fella on Twitch"}
+        />
         <meta name="twitter:image" content={ogImage || "/og-image.png"} />
 
         <title>{title}</title>
